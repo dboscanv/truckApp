@@ -1,0 +1,20 @@
+(function () {
+  "use strict";
+
+  angular.module("truckApp.Custodio", [])
+    .config(routeConfig);
+
+  function routeConfig($stateProvider) {
+    $stateProvider
+      .state("tab.custodio", {
+        url:"/custodios",
+        views: {
+          "tab-custodio":{
+            templateUrl:"app/Custodio/custodio.html",
+            controller: "CustodioCtrl",
+            controllerAs: "vm"
+          }
+        }
+      })
+  }
+})();
