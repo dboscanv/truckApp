@@ -5,6 +5,7 @@ angular.module('truckApp', [
   'truckApp.Camion',
   'truckApp.Clientes',
   'truckApp.Custodio',
+  'firebase'
 ])
 
   .run(function ($ionicPlatform) {
