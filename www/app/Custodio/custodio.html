@@ -1,0 +1,107 @@
+<ion-view title="Custodios">
+
+  <ion-content class="padding">
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-minus-outline"
+                ng-click="vm.mostrarBorrarVarios()"></button>
+      </div>
+      <h1 class="title ">Custodios</h1>
+      <div class="buttons">
+        <button class="button button-icon icon ion-plus-circled" ng-click="vm.abrirModal(1)">
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-list show-delete="vm.mostrarBorrar">
+      <ion-item ng-repeat="custodio in vm.list"
+                item="custodio"
+                class="item-remove-animate">
+        {{custodio.idempleado}} {{custodio.nombre}} {{custodio.apellido}} {{custodio.cargo}}
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="vm.eliminar(custodio)">
+        </ion-delete-button>
+        <ion-option-button class="button-calm" ng-click="vm.editar(custodio,$index)">
+          Editar
+        </ion-option-button>
+        <ion-option-button class="button-assertive"
+                           ng-click="vm.eliminar(custodio)">
+          Eliminar
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <script id="custodioModal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Crear custodio</h1>
+          <button class="button button-clear button-primary"
+                  ng-click="vm.cerrarModal(1)">Cancelar
+          </button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Nro. Empleado</span>
+              <input type="text" placeholder="Nro Empleado" ng-model="vm.custodio.idempleado">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Nombre</span>
+              <input type="text" placeholder="Nombre" ng-model="vm.custodio.nombre">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Apellido</span>
+              <input type="text" placeholder="Apellido" ng-model="vm.custodio.apellido">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Cargo</span>
+              <input type="text" placeholder="Cargo" ng-model="vm.custodio.cargo">
+            </label>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="vm.registrarCustodio()">
+              Registar
+            </button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <script id="abcd" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Editar custodio</h1>
+          <button class="button button-clear button-primary"
+                  ng-click="vm.cerrarModal(2)">Cancelar
+          </button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Nro. Empleado</span>
+              <input type="text" placeholder="Nro. Empleado" ng-model="vm.custodio.idempleado">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Nombre</span>
+              <input type="text" placeholder="Nombre" ng-model="vm.custodio.nombre">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Apellido</span>
+              <input type="text" placeholder="Apellido" ng-model="vm.custodio.apellido">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Cargo</span>
+              <input type="text" placeholder="Cargo" ng-model="vm.custodio.cargo">
+            </label>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="vm.guardar(vm.custodio)">
+              Registar
+            </button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+  </ion-content>
+</ion-view>
