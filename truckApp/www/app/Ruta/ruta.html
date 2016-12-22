@@ -1,5 +1,65 @@
 <ion-view title="Rutas">
-    <ion-content class="padding">
-        <h2>Hello rutas!</h2>
-    </ion-content>
+  <ion-content class="padding">
+    <ion-header-bar class="bar-positive">
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-minus-outline"
+                ng-click=""></button>
+      </div>
+      <h1 class="title ">Rutas</h1>
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-plus-outline"
+                ng-click="vm.abrirModal()">
+        </button>
+      </div>
+    </ion-header-bar>
+    <ion-list show-delete="">
+      <ion-item ng-repeat="ruta in vm.list"
+                item="ruta"
+                class="item-remove-animate">
+        {{ruta.idruta}} {{ruta.nombre}} {{ruta.tipo}}
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="">
+        </ion-delete-button>
+        <ion-option-button class="button-calm" ng-click="">
+          Editar
+        </ion-option-button>
+        <ion-option-button class="button-assertive"
+                           ng-click="">
+          Eliminar
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <script id="ruta" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Crear ruta</h1>
+          <button class="button button-clear button-primary"
+                  ng-click="">Cancelar
+          </button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Nro. Ruta</span>
+              <input type="text" placeholder="Nro Ruta" ng-model="vm.ruta.idempleado">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Nombre</span>
+              <input type="text" placeholder="Nombre" ng-model="vm.ruta.nombre">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Tipo</span>
+              <input type="text" placeholder="Tipo" ng-model="vm.ruta.tipo">
+            </label>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="">
+              Registar
+            </button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+  </ion-content>
 </ion-view>

@@ -62,7 +62,9 @@
     //eliminar custodio
     vm.eliminar = function (custodio) {
       console.log(custodio);
-      vm.list.splice(vm.list.indexOf(custodio), 1);
+      vm.list.$remove(custodio).then(function (s) {
+        console.log(s)
+      });
     };
 
     //editar custodio
@@ -72,15 +74,10 @@
     };
 
 
-    vm.guardar = function (a) {
-      vm.list.$save(a).then(function (s) {
-        $ionicPopup.alert({
-          title: "Actualizacion",
-          template: "Custodio actualizado con exito"
-        }).then(function (res) {
-          console.log(res)
-        });
-        vm.modal2.hide();
+    vm.guardar = function (obj) {
+      vm.list.$save(obj).then(function (success) {
+        vm.modal2.remove();
+        vm.crearPops("Actualizacion", "Custodio actualizado con exito")
       })
     };
 
@@ -89,6 +86,13 @@
       vm.mostrarBorrar = !vm.mostrarBorrar;
     }
 
+    //popUps
+    vm.crearPops = function (titulo, texto) {
+      $ionicPopup.alert({
+        title: titulo,
+        template: texto
+      });
+    }
 
   }
 })();
