@@ -10,6 +10,15 @@
     var vm = this;
     vm.custodio = {};
 
+    vm.abrirModal = abrirModal;
+    vm.cerrarModal = cerrarModal;
+    vm.registrarCustodio = registrarCustodio;
+    vm.eliminar = eliminar;
+    vm.editar = editar;
+    vm.guardar = guardar;
+    vm.mostrarBorrarVarios = mostrarBorrarVarios;
+    vm.crearPops = crearPops;
+
     //referencia a la coleccion custodio
     const custodio = firebase.database().ref('custodio');
 
@@ -38,56 +47,56 @@
       vm.modal2 = modal;
     });
 
-    vm.abrirModal = function (a) {
+    function abrirModal(a) {
       if (a === 1) {
         vm.modal.show();
       } else {
         vm.modal2.show();
       }
-    };
-    vm.cerrarModal = function (a) {
+    }
+
+    function cerrarModal(a) {
       if (a === 1) {
         vm.modal.hide();
       } else {
         vm.modal2.hide()
       }
-    };
+    }
 
     //crear custodio
-    vm.registrarCustodio = function () {
+    function registrarCustodio() {
       custodio.child(vm.custodio.idempleado).set(vm.custodio);
-      vm.modal.remove();
+      vm.modal.hide();
     }
 
     //eliminar custodio
-    vm.eliminar = function (custodio) {
+    function eliminar(custodio) {
       console.log(custodio);
       vm.list.$remove(custodio).then(function (s) {
         console.log(s)
       });
-    };
+    }
 
     //editar custodio
-    vm.editar = function (custodio) {
+    function editar(custodio) {
       vm.modal2.show();
       vm.custodio = custodio;
-    };
+    }
 
-
-    vm.guardar = function (obj) {
+    function guardar(obj) {
       vm.list.$save(obj).then(function (success) {
         vm.modal2.remove();
         vm.crearPops("Actualizacion", "Custodio actualizado con exito")
       })
-    };
+    }
 
     vm.mostrarBorrar = false;
-    vm.mostrarBorrarVarios = function () {
+    function mostrarBorrarVarios() {
       vm.mostrarBorrar = !vm.mostrarBorrar;
     }
 
     //popUps
-    vm.crearPops = function (titulo, texto) {
+    function crearPops(titulo, texto) {
       $ionicPopup.alert({
         title: titulo,
         template: texto

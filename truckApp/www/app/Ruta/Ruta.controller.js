@@ -6,7 +6,7 @@
 
   RutaCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup'];
 
-  function RutaCtrl($firebaseObject, $firebaseArray, $scope, $ionicModal) {
+  function RutaCtrl($firebaseObject,$scope, $firebaseArray, $ionicModal) {
     var vm = this;
     vm.ruta = {};
     const ruta = firebase.database().ref('ruta');
@@ -25,14 +25,32 @@
       vm.modal = modal;
     });
 
-    vm.abrirModal = function () {
-      vm.modal.show()
+    //modal para editar ruta
+    // $ionicModal.fromTemplateUrl('editarRuta', {
+    //   id: 2,
+    //   scope: $scope,
+    //   animation: 'slide-in-up',
+    //   backdropClickToClose: true,
+    //   hardwareBackButtonClose: true
+    // }).then(function (modal) {
+    //   vm.modal2 = modal;
+    // });
+
+
+    vm.abrirModal = function (a) {
+      if (a === 1) {
+        vm.modal.show();
+      } else {
+        vm.modal2.show();
+      }
     };
 
     //crear ruta
     vm.registrarRuta = function () {
       ruta.child(vm.ruta.idruta).set(vm.ruta);
-      vm.modal.remove();
+      vm.modal.hide();
     }
+
+
   }
 })();
