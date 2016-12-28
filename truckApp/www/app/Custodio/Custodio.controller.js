@@ -26,7 +26,7 @@
     vm.list = $firebaseArray(custodio);
 
     //modal para crear custodio
-    $ionicModal.fromTemplateUrl('custodioModal.html', {
+    $ionicModal.fromTemplateUrl('app/Custodio/modales/crearCustodio.html', {
       id: 1,
       scope: $scope,
       animation: 'slide-in-up',
@@ -37,7 +37,7 @@
     });
 
     //modal para editar custodio
-    $ionicModal.fromTemplateUrl('abcd', {
+    $ionicModal.fromTemplateUrl('app/Custodio/modales/editarCustodio.html', {
       id: 2,
       scope: $scope,
       animation: 'slide-in-up',
@@ -65,6 +65,9 @@
 
     //crear custodio
     function registrarCustodio() {
+      if (vm.list.$getRecord(vm.custodio.idempleado) != null) {
+        return console.log("Nro de empleado ya esta registrado")
+      }
       custodio.child(vm.custodio.idempleado).set(vm.custodio);
       vm.modal.hide();
     }
@@ -86,21 +89,13 @@
     function guardar(obj) {
       vm.list.$save(obj).then(function (success) {
         vm.modal2.remove();
-        vm.crearPops("Actualizacion", "Custodio actualizado con exito")
+
       })
     }
 
     vm.mostrarBorrar = false;
     function mostrarBorrarVarios() {
       vm.mostrarBorrar = !vm.mostrarBorrar;
-    }
-
-    //popUps
-    function crearPops(titulo, texto) {
-      $ionicPopup.alert({
-        title: titulo,
-        template: texto
-      });
     }
 
   }

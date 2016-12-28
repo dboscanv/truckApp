@@ -1,0 +1,30 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Editar ruta</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.cerrarModal(2)">Cancelar
+    </button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Nro. Ruta</span>
+        <input type="text" placeholder="Nro Ruta" ng-model="vm.ruta.idruta">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Nombre</span>
+        <input type="text" placeholder="Nombre" ng-model="vm.ruta.nombre">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Tipo</span>
+        <input type="text" placeholder="Tipo" ng-model="vm.ruta.tipo">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-positive"
+              ng-click="vm.guardar(vm.ruta)">
+        Actualizar
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

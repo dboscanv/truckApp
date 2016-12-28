@@ -19,36 +19,37 @@
     vm.guardar = guardar;
     vm.mostrarBorrarVarios = mostrarBorrarVarios;
     vm.juan = function () {
-      vm.modal.hide();
+      vm.modal2.show();
     }
 
     //ng-repeat
     vm.list = $firebaseArray(ruta);
 
     //modal para crear ruta
-    $ionicModal.fromTemplateUrl('ruta', {
+    $ionicModal.fromTemplateUrl('app/Ruta/modales/crearRuta.html', function ($ionicModal) {
       id: 1,
+        vm.modal = $ionicModal;
+    }, {
       scope: $scope,
       animation: 'slide-in-up',
       backdropClickToClose: true,
       hardwareBackButtonClose: true
-    }).then(function (modal) {
-      vm.modal = modal;
     });
 
     //modal para editar ruta
-    $ionicModal.fromTemplateUrl('editarRuta', {
-      id: 2,
+    $ionicModal.fromTemplateUrl('app/Ruta/modales/editarRuta.html', function ($ionicModal) {
+      id:2,
+        vm.modal2 = $ionicModal;
+    }, {
       scope: $scope,
       animation: 'slide-in-up',
       backdropClickToClose: true,
       hardwareBackButtonClose: true
-    }).then(function (modal) {
-      vm.modal2 = modal;
     });
 
 
     function abrirModal(a) {
+      debugger;
       if (a === 1) {
         vm.modal.show();
       } else {
@@ -58,14 +59,17 @@
 
     function cerrarModal(a) {
       if (a === 1) {
-        vm.modal.show();
+        vm.modal.hide();
       } else {
-        vm.modal2.show();
+        vm.modal2.hide();
       }
     }
 
     //crear ruta
     function registrarRuta() {
+      if (vm.list.$getRecord(vm.ruta.idruta) != null) {
+        return console.log("Nro de ruta ya esta registrado")
+      }
       ruta.child(vm.ruta.idruta).set(vm.ruta);
       vm.modal.hide();
     }
@@ -78,7 +82,8 @@
     }
 
     function editar(ruta) {
-      vm.modal2.show();
+      debugger;
+      abrirModal(2);
       vm.ruta = ruta;
     }
 
