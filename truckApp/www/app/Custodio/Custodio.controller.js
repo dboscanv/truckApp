@@ -4,9 +4,9 @@
   angular.module("truckApp.Custodio")
     .controller("CustodioCtrl", CustodioCtrl);
 
-  CustodioCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup'];
+  CustodioCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', '$ionicListDelegate'];
 
-  function CustodioCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, $ionicPopup) {
+  function CustodioCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, $ionicPopup, $ionicListDelegate) {
     var vm = this;
     vm.custodio = {};
 
@@ -17,7 +17,6 @@
     vm.editar = editar;
     vm.guardar = guardar;
     vm.mostrarBorrarVarios = mostrarBorrarVarios;
-    vm.crearPops = crearPops;
 
     //referencia a la coleccion custodio
     const custodio = firebase.database().ref('custodio');
@@ -89,7 +88,14 @@
     function guardar(obj) {
       vm.list.$save(obj).then(function (success) {
         vm.modal2.remove();
+        var alertPopup = $ionicPopup.alert({
+          title: 'Info',
+          template: 'Custodio Actualizado con exito.'
+        });
 
+        alertPopup.then(function (res) {
+          $ionicListDelegate.$getByHandle("custodioHandle").closeOptionButtons();
+        });
       })
     }
 

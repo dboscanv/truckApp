@@ -11,7 +11,7 @@
         </button>
       </div>
     </ion-header-bar>
-    <ion-list show-delete="vm.mostrarBorrar">
+    <ion-list show-delete="vm.mostrarBorrar" delegate-handle="custodioHandle">
       <ion-item ng-repeat="custodio in vm.list"
                 item="custodio"
                 class="item-remove-animate">
