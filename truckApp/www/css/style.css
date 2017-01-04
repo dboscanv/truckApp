@@ -1,4 +1,8 @@
 /* Empty. Add your own CSS if you like */
-.centrar-titulo{
+.centrar-titulo {
   text-align: center !important;
+}
+
+.iniciars {
+  padding-top: 20%;
 }

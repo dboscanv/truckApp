@@ -5,16 +5,18 @@
     .config(routeConfig);
 
   function routeConfig($stateProvider) {
-  $stateProvider
-    .state("tab.ruta", {
-      url:"/ruta",
-      views:{
-        "tab-ruta": {
-          templateUrl: "app/Ruta/ruta.html",
-          controller: "RutaCtrl",
-          controllerAs: "vm"
+    $stateProvider
+      .state("tab.ruta", {
+        url: "/ruta",
+        name:"ruta",
+        login: true,
+        views: {
+          "tab-ruta": {
+            templateUrl: "app/Ruta/ruta.html",
+            controller: "RutaCtrl",
+            controllerAs: "vm"
+          }
         }
-      }
-    });
+      });
   }
 })();

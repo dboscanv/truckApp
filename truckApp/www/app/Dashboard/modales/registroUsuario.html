@@ -1,0 +1,42 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Registro</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.cerrarModal(1)">Cancelar
+    </button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Nro. Empleado</span>
+        <input type="text" placeholder="Nro Empleado" ng-model="vm.admin.idempleado">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Nombre</span>
+        <input type="text" placeholder="Juan" ng-model="vm.admin.nombre">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Apellido</span>
+        <input type="text" placeholder="Perez" ng-model="vm.admin.apellido">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Cargo</span>
+        <input type="text" placeholder="Administrador I" ng-model="vm.admin.cargo">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Correo</span>
+        <input type="email" placeholder="correo@arroba.com" ng-model="vm.admin.email">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Clave</span>
+        <input type="password" placeholder="12345678" ng-model="vm.admin.password">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-dark"
+              ng-click="vm.registrar()">
+        Registar
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -49,7 +49,6 @@
 
 
     function abrirModal(a) {
-      debugger;
       if (a === 1) {
         vm.modal.show();
       } else {
@@ -82,7 +81,6 @@
     }
 
     function editar(ruta) {
-      debugger;
       abrirModal(2);
       vm.ruta = ruta;
     }

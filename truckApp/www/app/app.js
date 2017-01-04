@@ -1,3 +1,4 @@
+debugger;
 angular.module('truckApp', [
   'ionic',
   'truckApp.Dashboard',
@@ -5,6 +6,7 @@ angular.module('truckApp', [
   'truckApp.Camion',
   'truckApp.Clientes',
   'truckApp.Custodio',
+  'truckApp.Login',
   'firebase'
 ])
 
@@ -32,7 +34,6 @@ angular.module('truckApp', [
         abstract: true,
         templateUrl: 'app/tabs.html'
       });
-
-    $urlRouterProvider.otherwise('/tab/dash');
+    // $urlRouterProvider.otherwise('/login');
 
   });

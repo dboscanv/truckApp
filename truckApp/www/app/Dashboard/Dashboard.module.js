@@ -10,7 +10,9 @@
         url: '/dash',
         views: {
           'tab-dash': {
-            templateUrl: 'app/Dashboard/dashboard.html'
+            templateUrl: 'app/Dashboard/dashboard.html',
+            controller: 'dashboardCtrl',
+            controllerAs: 'vm'
           }
         }
       })
