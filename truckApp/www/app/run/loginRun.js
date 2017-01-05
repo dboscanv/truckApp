@@ -9,7 +9,7 @@
   loginRun.$inject = ['$rootScope', '$location', '$state'];
 
   function loginRun($rootScope, $location, $state) {
-    debugger
+
     $rootScope.$on('$stateChangeStart', function (toState, toParams) {
       console.log(toParams)
       if (toParams.login === true) {
