@@ -44,19 +44,16 @@
 
     var usuario = {
       email: "juansimon18.js@gmail.com",
-      password: "123456789"
-    }
+      password: "19971510"
+    };
 
 
     function entrar() {
 
       auth.$signInWithEmailAndPassword(usuario.email, usuario.password).then(function (user) {
+        debugger;
         var query = refAdmin.orderByChild('email').equalTo(usuario.email);
-        query.on('value', function (asd) {
-          console.log(asd.val())
-        });
-        $rootScope.usua = $firebaseArray(query);
-        console.log($rootScope.usua);
+        $rootScope.usua = $firebaseObject(query);
         $state.go('tab.dash');
       }).catch(function (err) {
         alert("Correo o clave invalida")
