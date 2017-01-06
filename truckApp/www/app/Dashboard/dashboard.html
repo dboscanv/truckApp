@@ -1,26 +1,33 @@
-<ion-view title="Principal">
+<ion-view title="Perfil de usuario">
 
   <ion-content style="background-color: gainsboro">
 
     <div class="bar bar-header bar-dark">
-      <h1 class="title">Planificacion de Rutas</h1>
+      <h1 class="title">Informacion</h1>
       <button class="button icon ion-compose" ng-click="vm.abrirModal(1)"></button>
     </div>
-    <div style="padding-top: 14%;">
-      <div class="list">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Correo</span>
-          <input type="text" placeholder="Correo" ng-model="vm.email">
-        </label>
-
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Clave</span>
-          <input type="password" placeholder="Clave" ng-model="vm.password">
-        </label>
-      </div>
-      <div class="padding">
-        <button class="button button-block button-dark" ng-click="vm.entrar()">Iniciar Sesion</button>
-      </div>
+    <div class="list" ng-repeat="info in usua">
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-email"></i>
+        {{info.nombre}} {{info.apellido}}
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-chatbubble-working"></i>
+        {{info.cargo}}
+        <i class="icon ion-ios-telephone-outline"></i>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-mic-a"></i>
+        {{info.email}}
+        <span class="item-note">
+      Gadasd
+    </span>
+      </a>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-person-stalker"></i>
+        Friends
+        <span class="badge badge-assertive">0</span>
+      </a>
     </div>
   </ion-content>
 </ion-view>
