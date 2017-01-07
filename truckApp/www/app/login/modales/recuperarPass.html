@@ -1,0 +1,22 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Recuperar Contraseña</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.cerrarModal(2)">Cancelar
+    </button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Correo</span>
+        <input type="text" placeholder="Correo" ng-model="vm.email">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-dark"
+              ng-click="vm.recuperarClave()">
+        Recuperar
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

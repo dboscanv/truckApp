@@ -7,14 +7,19 @@
   function routeConfig($stateProvider) {
     $stateProvider
       .state("tab.Camion", {
-      url: "/camion",
-      views: {
-        "tab-camion": {
-          templateUrl: "app/Camion/camion.html",
-          controller: "CamionCtrl",
-          controllerAs: "vm"
+        url: "/camion",
+        resolve: {
+          'checkAuth': ['comunFactory', function (comunFactory) {
+            return comunFactory.$requireSignIn();
+          }]
+        },
+        views: {
+          "tab-camion": {
+            templateUrl: "app/Camion/camion.html",
+            controller: "CamionCtrl",
+            controllerAs: "vm"
+          }
         }
-      }
-    });
+      });
   }
 })();

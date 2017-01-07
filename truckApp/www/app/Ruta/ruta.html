@@ -1,6 +1,6 @@
 <ion-view title="Rutas">
-  <ion-content class="padding">
-    <ion-header-bar class="bar-positive">
+  <ion-content>
+    <div class="bar bar-header bar-dark">
       <div class="buttons">
         <button class="button button-icon icon ion-ios-minus-outline"
                 ng-click="vm.mostrarBorrarVarios()"></button>
@@ -11,19 +11,22 @@
                 ng-click="vm.abrirModal(1)">
         </button>
       </div>
-    </ion-header-bar>
+    </div>
+
     <ion-list show-delete="vm.mostrarBorrar">
-      <ion-item ng-repeat="ruta in vm.list"
-                item="ruta"
-                class="item-remove-animate">
-        {{ruta.idruta}} {{ruta.nombre}} {{ruta.tipo}}
-        <ion-delete-button class="ion-minus-circled"
-                           ng-click="vm.eliminar(ruta)">
-        </ion-delete-button>
-        <ion-option-button class="button-calm" ng-click="vm.editar(ruta)">
-          Editar
-        </ion-option-button>
-      </ion-item>
+      <div style="margin-top: 45px;">
+        <ion-item ng-repeat="ruta in vm.list"
+                  item="ruta"
+                  class="item-remove-animate">
+          {{ruta.idruta}} {{ruta.nombre}} {{ruta.tipo}}
+          <ion-delete-button class="ion-minus-circled"
+                             ng-click="vm.eliminar(ruta)">
+          </ion-delete-button>
+          <ion-option-button class="button-calm" ng-click="vm.editar(ruta)">
+            Editar
+          </ion-option-button>
+        </ion-item>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>

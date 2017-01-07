@@ -2,32 +2,44 @@
 
   <ion-content style="background-color: gainsboro">
 
-    <div class="bar bar-header bar-dark">
+    <div class="bar bar-header bar-dark" style="margin-top: -45px;">
       <h1 class="title">Informacion</h1>
       <button class="button icon ion-compose" ng-click="vm.abrirModal(1)"></button>
     </div>
-    <div class="list" ng-repeat="info in usua">
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-email"></i>
-        {{info.nombre}} {{info.apellido}}
-      </a>
-      <a class="item item-icon-left item-icon-right" href="#">
-        <i class="icon ion-chatbubble-working"></i>
-        {{info.cargo}}
-        <i class="icon ion-ios-telephone-outline"></i>
-      </a>
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-mic-a"></i>
-        {{info.email}}
-        <span class="item-note">
-      Gadasd
-    </span>
-      </a>
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-person-stalker"></i>
-        Friends
-        <span class="badge badge-assertive">0</span>
-      </a>
+    <div style="margin-top: 45px;">
+      <div class="list">
+        <label class="item item-input">
+          <i class="icon ion-search"></i> &nbsp;&nbsp;
+          <input type="text" ng-model="vm.infoUsuario.idempleado" ng-disabled="true">
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-search"></i> &nbsp;&nbsp;
+          <input type="text" ng-model="vm.infoUsuario.nombre" ng-disabled="true">
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-search"></i> &nbsp;&nbsp;
+          <input type="text" ng-model="vm.infoUsuario.apellido" ng-disabled="true">
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-search"></i> &nbsp;&nbsp;
+          <input type="text" ng-model="vm.infoUsuario.cargo" ng-disabled="true">
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-search"></i> &nbsp;&nbsp;
+          <input type="text" ng-model="vm.infoUsuario.email" ng-disabled="true">
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-search"></i> &nbsp;&nbsp;
+          <input type="password" ng-model="vm.infoUsuario.password" ng-disabled="true">
+        </label>
+      </div>
+      <div class="padding">
+        <div class="button-bar">
+          <a class="button">Editar</a>
+          <a class="button">Guardar</a>
+          <a class="button" ng-click="cerrarSesion()">Cancelar</a>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>

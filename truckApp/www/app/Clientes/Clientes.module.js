@@ -8,6 +8,11 @@
     $stateProvider
       .state("tab.clientes", {
         url:"/clientes",
+        resolve: {
+          'checkAuth': ['comunFactory', function (comunFactory) {
+            return comunFactory.$requireSignIn();
+          }]
+        },
         views: {
           "tab-clientes":{
             templateUrl:"app/Clientes/clientes.html",

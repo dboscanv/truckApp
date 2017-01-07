@@ -4,9 +4,9 @@
   angular.module("truckApp.Ruta")
     .controller("RutaCtrl", RutaCtrl);
 
-  RutaCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup'];
+  RutaCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', 'checkAuth'];
 
-  function RutaCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal) {
+  function RutaCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, checkAuth) {
     var vm = this;
     vm.ruta = {};
     const ruta = firebase.database().ref('ruta');

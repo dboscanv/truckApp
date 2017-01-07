@@ -4,9 +4,9 @@
   angular.module("truckApp.Custodio")
     .controller("CustodioCtrl", CustodioCtrl);
 
-  CustodioCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', '$ionicListDelegate'];
+  CustodioCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', '$ionicListDelegate', 'checkAuth'];
 
-  function CustodioCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, $ionicPopup, $ionicListDelegate) {
+  function CustodioCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, $ionicPopup, $ionicListDelegate, checkAuth) {
     var vm = this;
     vm.custodio = {};
 

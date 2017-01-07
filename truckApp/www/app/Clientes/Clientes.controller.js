@@ -4,9 +4,9 @@
   angular.module("truckApp.Clientes")
     .controller("ClientesCtrl", ClientesCtrl);
 
-  ClientesCtrl.$inject = [];
+  ClientesCtrl.$inject = ['checkAuth'];
 
-  function ClientesCtrl() {
+  function ClientesCtrl(checkAuth) {
     var vm = this;
 
   }

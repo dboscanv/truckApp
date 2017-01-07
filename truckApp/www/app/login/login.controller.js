@@ -7,18 +7,19 @@
   angular.module('truckApp.Login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$firebaseArray', '$state', '$rootScope'];
+  LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$firebaseArray', '$state', '$rootScope', '$localStorage'];
 
-  function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state, $rootScope) {
+  function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state, $rootScope, $localStorage) {
     var vm = this;
     var auth = $firebaseAuth();
     var refAdmin = firebase.database().ref('administrador');
-    // var ref = $firebaseArray(refAdmin);
     vm.admin = {};
     vm.entrar = entrar;
     vm.abrirModal = abrirModal;
     vm.cerrarModal = cerrarModal;
     vm.registrar = registrar;
+    vm.recuperarClave = recuperarClave;
+    $rootScope.cerrarSesion = cerrarSesion;
 
     $ionicModal.fromTemplateUrl('app/login/modales/registroUsuario.html', function ($ionicModal) {
       id:1,
@@ -30,37 +31,41 @@
       hardwareBackButtonClose: true
     });
 
+    $ionicModal.fromTemplateUrl('app/login/modales/recuperarPass.html', function ($ionicModal) {
+      id:2,
+        vm.modal2 = $ionicModal;
+    }, {
+      scope: $scope,
+      animation: 'slide-in-up',
+      backdropClickToClose: true,
+      hardwareBackButtonClose: true
+    });
+
     function abrirModal(a) {
       if (a === 1) {
         vm.modal.show()
+      } else {
+        vm.modal2.show()
       }
     }
 
     function cerrarModal(a) {
       if (a === 1) {
         vm.modal.hide()
+      } else {
+        vm.modal2.hide()
       }
     }
 
-    var usuario = {
-      email: "juansimon18.js@gmail.com",
-      password: "19971510"
-    };
-
-
     function entrar() {
-
-      auth.$signInWithEmailAndPassword(usuario.email, usuario.password).then(function (user) {
-        debugger;
-        var query = refAdmin.orderByChild('email').equalTo(usuario.email);
-        $rootScope.usua = $firebaseObject(query);
+      auth.$signInWithEmailAndPassword(vm.email, vm.password).then(function (user) {
+        var query = refAdmin.orderByChild('email').equalTo(vm.email);
+        $localStorage.usua = $firebaseArray(query);
         $state.go('tab.dash');
       }).catch(function (err) {
         alert("Correo o clave invalida")
       })
     }
-
-    console.log($rootScope.usua);
 
     function registrar() {
       auth.$createUserWithEmailAndPassword(vm.admin.email, vm.admin.password).catch(function (err) {
@@ -68,6 +73,22 @@
       });
       refAdmin.child(vm.admin.idempleado).set(vm.admin);
       vm.cerrarModal(1);
+    }
+
+    function recuperarClave() {
+      auth.$sendPasswordResetEmail(vm.email).then(function () {
+        alert("Correo enviado con exito")
+        vm.modal2.hide();
+      }).catch(function (err) {
+        vm.modal2.hide();
+        alert("El correo ingresado no existe");
+      })
+    }
+
+    function cerrarSesion() {
+      auth.$signOut();
+      delete $localStorage.usua;
+      $state.go('/login');
     }
   }
 })();

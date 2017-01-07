@@ -4,9 +4,9 @@
   angular.module("truckApp.Camion")
     .controller("CamionCtrl", CamionCtrl);
 
-  CamionCtrl.$inject = [];
+  CamionCtrl.$inject = ['checkAuth'];
 
-  function CamionCtrl() {
+  function CamionCtrl(checkAuth) {
     var vm = this;
   }
 })();

@@ -10,11 +10,19 @@
 
   function loginRun($rootScope, $location, $state) {
 
-    $rootScope.$on('$stateChangeStart', function (toState, toParams) {
-      if (toParams.login === true) {
-        $location.path('/login');
-      }
+    // $rootScope.$on('$stateChangeStart', function (toState, toParams) {
+    //   if (toParams.login === true) {
+    //     $location.path('/login');
+    //   }
+    // })
 
-    })
+    $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      console.log(error);
+      if (error === "AUTH_REQUIRED") {
+        $state.go("/login");
+      }
+    });
+
+
   }
 })();

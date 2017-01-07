@@ -8,6 +8,11 @@
     $stateProvider
       .state('tab.dash', {
         url: '/dash',
+        resolve: {
+          'checkAuth': ['comunFactory', function (comunFactory) {
+            return comunFactory.$requireSignIn();
+          }]
+        },
         views: {
           'tab-dash': {
             templateUrl: 'app/Dashboard/dashboard.html',

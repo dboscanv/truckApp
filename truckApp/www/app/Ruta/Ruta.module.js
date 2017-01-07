@@ -8,8 +8,12 @@
     $stateProvider
       .state("tab.ruta", {
         url: "/ruta",
-        name:"ruta",
-        login: true,
+        name: "ruta",
+        resolve: {
+          'checkAuth': ['comunFactory', function (comunFactory) {
+            return comunFactory.$requireSignIn();
+          }]
+        },
         views: {
           "tab-ruta": {
             templateUrl: "app/Ruta/ruta.html",
