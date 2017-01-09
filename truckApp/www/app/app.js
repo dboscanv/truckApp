@@ -7,6 +7,7 @@ angular.module('truckApp', [
   'truckApp.Login',
   'truckApp.Custodio',
   'truckApp.Factory',
+  'truckApp.Principal',
   'ngStorage',
   'firebase'
 ])
@@ -35,6 +36,6 @@ angular.module('truckApp', [
         abstract: true,
         templateUrl: 'app/tabs.html'
       });
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/principal');
 
   });

@@ -7,13 +7,12 @@
   angular.module('truckApp.Dashboard')
     .controller('dashboardCtrl', dashboardCtrl);
 
-  dashboardCtrl.$inject = ['checkAuth', '$localStorage', '$firebaseAuth'];
+  dashboardCtrl.$inject = ['checkAuth', '$localStorage', '$firebaseAuth', '$scope'];
 
-  function dashboardCtrl(checkAuth, $localStorage, $firebaseAuth) {
+  function dashboardCtrl(checkAuth, $localStorage, $firebaseAuth, $scope) {
     var vm = this;
 
     vm.infoUsuario = $localStorage.usua[0];
-
 
   }
 })();

@@ -1,0 +1,22 @@
+<ion-view title="Configuracion">
+  <ion-content style="background-color: gainsboro">
+    <div class="padding">
+
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" placeholder="ID Camion">
+        </label>
+      </div>
+
+      <ion-list ng-repeat="custodio in vm.list">
+        <ion-checkbox ng-model="vm.custodio[$index]" ng-true-value="{{custodio}}">{{custodio.nombre}}
+          {{custodio.apellido}}
+        </ion-checkbox>
+      </ion-list>
+    </div>
+
+    <div class="padding">
+      <button class="button button-dark">Guardar configuracion</button>
+    </div>
+  </ion-content>
+</ion-view>
