@@ -31,7 +31,12 @@
         <ion-item ng-repeat="custodio in vm.list"
                   item="custodio"
                   class="item-remove-animate">
-          {{custodio.idempleado}} {{custodio.nombre}} {{custodio.apellido}} {{custodio.cargo}}
+          <ul>
+            <li><strong>ID empleado: </strong>{{ custodio.idempleado }}</li>
+            <li><strong>Nombre:</strong> {{custodio.nombre}}</li>
+            <li><strong>Apellido: </strong>{{custodio.apellido}}</li>
+            <li><strong>Cargo: </strong> {{custodio.cargo}}</li>
+          </ul>
           <ion-delete-button class="ion-minus-circled"
                              ng-click="vm.eliminar(custodio)">
           </ion-delete-button>

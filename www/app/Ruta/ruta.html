@@ -18,7 +18,11 @@
         <ion-item ng-repeat="ruta in vm.list"
                   item="ruta"
                   class="item-remove-animate">
-          {{ruta.idruta}} {{ruta.nombre}} {{ruta.tipo}}
+          <ul>
+            <li><strong>ID Ruta: </strong>{{ruta.idruta}}</li>
+            <li><strong>Nombre:</strong> {{ruta.nombre}}</li>
+            <li><strong>Tipo: </strong>{{ruta.tipo}}</li>
+          </ul>
           <ion-delete-button class="ion-minus-circled"
                              ng-click="vm.eliminar(ruta)">
           </ion-delete-button>
