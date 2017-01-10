@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Crear camión</h1>
+        <button class="button button-clear button-primary"
+                ng-click="vm.cerrarModal(1)">Cancelar
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Nro. Camión</span>
+                <input type="number" placeholder="Nro. Camión" ng-model="vm.camion.id">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Cantidad</span>
+                <input type="number" placeholder="Cantidad" ng-model="vm.camion.cantidad">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Capacidad</span>
+                <input type="number" placeholder="Capacidad" ng-model="vm.camion.capacidad">
+            </label>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="vm.guardarCamion()">
+                Registar
+            </button>
+        </div>
+    </ion-content>
+</ion-modal-view>

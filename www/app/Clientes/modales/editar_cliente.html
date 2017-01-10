@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Editar cliente</h1>
+        <button class="button button-clear button-primary"
+                ng-click="vm.cerrarModal(2)">Cancelar
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">ID Cliente</span>
+                <input type="number" placeholder="ID Cliente" ng-model="vm.cliente.idcliente">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" placeholder="Cantidad" ng-model="vm.cliente.nombre">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Dirección</span>
+                <input type="text" placeholder="Dirección" ng-model="vm.cliente.direccion">
+            </label>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="vm.editarCliente()">
+                Editar
+            </button>
+        </div>
+    </ion-content>
+</ion-modal-view>
