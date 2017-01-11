@@ -6,15 +6,9 @@
     .module('truckApp')
     .run(loginRun);
 
-  loginRun.$inject = ['$rootScope', '$location', '$state'];
+  loginRun.$inject = ['$rootScope', '$state'];
 
-  function loginRun($rootScope, $location, $state) {
-
-    // $rootScope.$on('$stateChangeStart', function (toState, toParams) {
-    //   if (toParams.login === true) {
-    //     $location.path('/login');
-    //   }
-    // })
+  function loginRun($rootScope, $state) {
 
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
       console.log(error);
@@ -22,7 +16,5 @@
         $state.go("/login");
       }
     });
-
-
   }
 })();
