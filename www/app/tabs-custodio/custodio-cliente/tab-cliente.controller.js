@@ -1,19 +1,20 @@
 /**
  * Created by eldelasfranelas on 10/01/2017.
  */
-(function () {
+(function (firebase) {
   'use strict';
 
   angular
     .module('truckApp.CustodioFinal.Cliente')
-    .controller('tab_cliente', rutaCtrl);
+    .controller('tab_cliente', clienteCtrl);
 
-  rutaCtrl.$inject = [];
+  clienteCtrl.$inject = ['$firebaseArray'];
 
-  function rutaCtrl() {
+  function clienteCtrl($firebaseArray) {
     var vm = this;
-    vm.title = 'tab_cliente';
-    console.log(vm.title);
 
+    const cliente = firebase.ref("cliente");
+
+    vm.clientes = $firebaseArray(cliente);
   }
-})();
+})(firebase.database());

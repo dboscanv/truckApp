@@ -2,21 +2,48 @@
   <ion-content style="background-color: gainsboro">
     <div class="padding">
 
-      <div class="list list-inset">
-        <label class="item item-input">
-          <input type="text" placeholder="ID Camion">
+      <!--<div class="list list-inset">-->
+      <!--<label class="item item-input">-->
+      <!--<input type="text" placeholder="Camion" ng-model="vm.idcamion">-->
+      <!--</label>-->
+      <!--</div>-->
+      <!--<div class="list list-inset">-->
+      <!--<label class="item item-input">-->
+      <!--<input type="text" placeholder="Ruta" ng-model="vm.ruta">-->
+      <!--</label>-->
+      <!--</div>-->
+
+      <div class="list">
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Camion
+          </div>
+          <select ng-options="camion.id as camion.id for camion in vm.camion" ng-model="vm.idcamion">
+            <option ng-if="!camion.id">Camion:</option>
+          </select>
         </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Ruta
+          </div>
+          <select ng-options="ruta.idruta as ruta.nombre for ruta in vm.ruta" ng-model="vm.idruta">
+          </select>
+        </label>
+
       </div>
 
-      <ion-list ng-repeat="custodio in vm.list">
+      <ion-list ng-repeat="custodio in vm.list | filter:!true">
         <ion-checkbox ng-model="vm.custodio[$index]" ng-true-value="{{custodio}}">{{custodio.nombre}}
           {{custodio.apellido}}
         </ion-checkbox>
       </ion-list>
     </div>
-
     <div class="padding">
-      <a href="#/tab-custodio/tab-ruta" class="button button-dark">Guardar configuracion</a>
+      <!--<a href="#/tab-custodio/tab-cliente" class="button button-dark">Guardar-->
+      <a class="button button-dark" ng-click="vm.configurar(vm.custodio)">Guardar
+        configuracion</a>
     </div>
   </ion-content>
 </ion-view>
