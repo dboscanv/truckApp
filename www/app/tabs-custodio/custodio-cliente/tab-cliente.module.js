@@ -10,9 +10,13 @@
       .state('tab_cliente', {
         url: '/tab-cliente',
         parent: 'tab-custodio',
-        templateUrl: 'app/tabs-custodio/custodio-cliente/tab-cliente.html',
-        controller: 'tab_cliente',
-        controllerAs: 'vm'
+        views: {
+          'tab_cliente': {
+            templateUrl: 'app/tabs-custodio/custodio-cliente/tab-cliente.html',
+            controller: 'tab_cliente',
+            controllerAs: 'vm'
+          }
+        }
       });
   }
 })();

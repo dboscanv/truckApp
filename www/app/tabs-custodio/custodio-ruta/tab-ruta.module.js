@@ -10,9 +10,13 @@
       .state('tab_ruta', {
         url: '/tab-ruta',
         parent: 'tab-custodio',
-        templateUrl: 'app/tabs-custodio/custodio-ruta/tab-ruta.html',
-        controller: 'tab_ruta',
-        controllerAs: 'vm'
+        views: {
+          'tab_ruta': {
+            templateUrl: 'app/tabs-custodio/custodio-ruta/tab-ruta.html',
+            controller: 'tab_ruta',
+            controllerAs: 'vm'
+          }
+        }
       });
   }
 })();

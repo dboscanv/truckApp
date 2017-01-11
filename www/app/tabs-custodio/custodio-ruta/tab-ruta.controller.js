@@ -11,6 +11,7 @@
   rutaCtrl.$inject = [];
 
   function rutaCtrl() {
+    debugger;
     var vm = this;
     vm.title = 'tab_ruta';
     console.log(vm.title);

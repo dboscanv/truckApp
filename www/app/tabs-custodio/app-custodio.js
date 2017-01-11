@@ -13,8 +13,8 @@
       .state('tab-custodio', {
         url: '/tab-custodio',
         abstract: true,
-        templateUrl: 'app/tabs-custodio/tab-custodio.html',
-      })
+        templateUrl: 'app/tabs-custodio/tab-custodio.html'
+      });
     $urlRouterProvider.otherwise('/tab-custodio');
 
   }
