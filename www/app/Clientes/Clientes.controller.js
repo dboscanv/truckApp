@@ -4,15 +4,17 @@
   angular.module("truckApp.Clientes")
     .controller("ClientesCtrl", ClientesCtrl);
 
-  ClientesCtrl.$inject = ['checkAuth', "$firebaseArray", "$ionicModal", "$scope"];
+  ClientesCtrl.$inject = ['checkAuth', "$firebaseArray", "$ionicModal", "$scope","$firebaseObject"];
 
-  function ClientesCtrl(checkAuth, $firebaseArray, $ionicModal, $scope) {
-    
+  function ClientesCtrl(checkAuth, $firebaseArray, $ionicModal, $scope,$firebaseObject) {
+
     var vm = this;
     vm.cliente = {};
     const cliente = firebase.database().ref("cliente");
+    const rutas = firebase.database().ref("ruta");
 
     vm.clientes = $firebaseArray(cliente);
+    vm.rutas = $firebaseArray(rutas);
 
     vm.eliminar = Eliminar;
     vm.abrirModal = AbrirModal;
@@ -64,6 +66,7 @@
     }
 
     function GuardarCliente() {
+      //Guardar el cliente
       cliente.child(vm.cliente.idcliente).set(vm.cliente).then(function (ref) {
         console.log(ref);
         console.log("Añadido!");

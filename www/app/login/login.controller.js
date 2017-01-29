@@ -60,6 +60,7 @@
     vm.email = "juansimon18.js@gmail.com";
     vm.password = "123456";
     function entrar() {
+      console.log("Entro");
       auth.$signInWithEmailAndPassword(vm.email, vm.password).then(function (user) {
         var query = refAdmin.orderByChild('email').equalTo(vm.email);
         query.on('value', function (snap) {
@@ -69,6 +70,7 @@
         $localStorage.usua = $firebaseArray(query);
         $state.go('tab.dash');
       }).catch(function (err) {
+        console.log(err);
         alert("Correo o clave invalida")
       })
     }

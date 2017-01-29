@@ -1,0 +1,30 @@
+<ion-view title="Recorridos">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="reco in vm.reco">
+        <ul>
+          <li><strong>Ruta: </strong> {{reco.ruta}}</li>
+          <li><strong>Fecha inicial:</strong> {{reco.fecha_ini}}</li>
+          <li><strong>Camiones:</strong>
+            <ul ng-repeat="(key,value) in reco.camiones">
+              <li>{{key}}</li>
+            </ul>
+          </li>
+          <li><strong>Custodios:</strong>
+            <ul ng-repeat="(key,value) in reco.custodios">
+              <li>{{key}}</li>
+            </ul>
+          </li>
+        </ul>
+        <ion-option-button class="button-assertive"
+                           ng-click="">
+          Finalizar Recorrido
+        </ion-option-button>
+        <ion-option-button class="button-calm"
+                           ng-click="">
+          Añadir custodio
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

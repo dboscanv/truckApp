@@ -9,6 +9,7 @@ angular.module('truckApp', [
   'truckApp.Factory',
   'truckApp.Principal',
   'truckApp.CustodioFinal',
+  'truckApp.Recorridos',
   'ngStorage',
   'firebase'
 ])
