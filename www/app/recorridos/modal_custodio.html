@@ -1,0 +1,22 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Asignar otro custodio</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.modal.hide()">Cancelar
+    </button>
+  </ion-header-bar>
+  <ion-content>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Custodio
+      </div>
+      <select ng-options="cust.idempleado as cust.nombre + ' ' + cust.apellido for cust in vm.custodios"
+              ng-model="vm.new_custodio">
+      </select>
+    </label>
+    <button class="button button-block button-positive" ng-click="vm.add_custodio(vm.new_custodio)"
+            ng-disabled="!vm.new_custodio">Añadir custodio
+    </button>
+  </ion-content>
+</ion-modal-view>
+

@@ -12,16 +12,16 @@
           </li>
           <li><strong>Custodios:</strong>
             <ul ng-repeat="(key,value) in reco.custodios">
-              <li>{{key}}</li>
+              <li>{{vm.get_nombre(key)}}</li>
             </ul>
           </li>
         </ul>
         <ion-option-button class="button-assertive"
-                           ng-click="">
+                           ng-click="vm.end_reco(reco.$id)">
           Finalizar Recorrido
         </ion-option-button>
         <ion-option-button class="button-calm"
-                           ng-click="">
+                           ng-click="vm.show_modal(reco.$id)">
           Añadir custodio
         </ion-option-button>
       </ion-item>
