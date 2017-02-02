@@ -13,8 +13,6 @@
   function rutaCtrl() {
     var vm = this;
     vm.title = 'tab_ruta';
-    console.log(vm.title);
-
   }
 })();
 

@@ -88,7 +88,14 @@
     function guardar(obj) {
       vm.list.$save(obj).then(function (success) {
         vm.modal2.hide();
-        vm.crearPops("Actualizacion", "Ruta actualizada con exito")
+        var alertPopup = $ionicPopup.alert({
+          title: 'Info',
+          template: 'Custodio Actualizado con exito.'
+        });
+
+        alertPopup.then(function (res) {
+          $ionicListDelegate.$getByHandle("rutaHandle").closeOptionButtons();
+        });
       })
     }
 
@@ -96,15 +103,6 @@
     function mostrarBorrarVarios() {
       vm.mostrarBorrar = !vm.mostrarBorrar;
     }
-
-    //popUps
-    function crearPops(titulo, texto) {
-      $ionicPopup.alert({
-        title: titulo,
-        template: texto
-      });
-    }
-
   }
 })
 ();

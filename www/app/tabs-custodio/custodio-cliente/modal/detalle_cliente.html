@@ -1,0 +1,45 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Detalle del Cliente</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.cerrarModal(1)">Cerrar
+    </button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="padding">
+      <button class="button button-dark icon-left ion-clipboard" ng-click="vm.open()">Visitar
+      </button>
+    </div>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">ID Cliente</span>
+        <input type="text" placeholder="" ng-model="vm.cliente.idcliente" disabled>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Nombre</span>
+        <input type="text" placeholder="" ng-model="vm.cliente.nombre" disabled>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Dirección</span>
+        <input type="text" placeholder="" ng-model="vm.cliente.direccion" disabled>
+      </label>
+    </div>
+    <div class="card" ng-if="vm.mapa">
+      <div class="item item-text-wrap">
+        Ubicación
+      </div>
+      <ng-map center="[40.74, -74.18]"></ng-map>
+    </div>
+    <div class="card" ng-if="!vm.mapa">
+      <div class="item item-text-wrap">
+        La ubicación aún no ha sido registrada
+      </div>
+    </div>
+    <div class="padding">
+      <!--<button class="button button-block button-positive"-->
+      <!--ng-click="vm.guardar(vm.ruta)">-->
+      <!--Geolocalizar-->
+      <!--</button>-->
+    </div>
+  </ion-content>
+</ion-modal-view>

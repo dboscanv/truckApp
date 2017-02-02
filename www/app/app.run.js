@@ -6,9 +6,14 @@
     .module('truckApp')
     .run(loginRun);
 
-  loginRun.$inject = ['$rootScope', '$state'];
+  loginRun.$inject = ['$rootScope', '$state', '$localStorage'];
 
-  function loginRun($rootScope, $state) {
+  function loginRun($rootScope, $state, $localStorage) {
+
+    $rootScope.$on('$stateChangeSuccess', function () {
+      var config = $localStorage.config;
+      (typeof $localStorage.config != "undefined") ? $state.go('tab_cliente', {idRuta: config[0].idRuta}) : console.log("nadas")
+    });
 
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
       console.log(error);

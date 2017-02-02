@@ -4,9 +4,9 @@
   angular.module("truckApp.Clientes")
     .controller("ClientesCtrl", ClientesCtrl);
 
-  ClientesCtrl.$inject = ['checkAuth', "$firebaseArray", "$ionicModal", "$scope","$firebaseObject"];
+  ClientesCtrl.$inject = ['checkAuth', "$firebaseArray", "$ionicModal", "$scope", "$firebaseObject", '$ionicListDelegate'];
 
-  function ClientesCtrl(checkAuth, $firebaseArray, $ionicModal, $scope,$firebaseObject) {
+  function ClientesCtrl(checkAuth, $firebaseArray, $ionicModal, $scope, $firebaseObject, $ionicListDelegate) {
 
     var vm = this;
     vm.cliente = {};
@@ -77,6 +77,7 @@
     function Editar() {
       vm.clientes.$save(vm.cliente).then(function (ref) {
         alert("Actualizado!");
+        $ionicListDelegate.$getByHandle("clienteHandle").closeOptionButtons();
         vm.modal2.hide();
       }, function (error) {
         console.log(error);

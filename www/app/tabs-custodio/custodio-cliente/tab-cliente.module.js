@@ -8,7 +8,7 @@
   function routeConfig($stateProvider) {
     $stateProvider
       .state('tab_cliente', {
-        url: '/tab-cliente',
+        url: '/tab-cliente/:idRuta',
         parent: 'tab-custodio',
         views: {
           'tab_cliente': {

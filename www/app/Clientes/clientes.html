@@ -1,34 +1,35 @@
 <ion-view title="Clientes">
-    <ion-content>
-        <div class="bar bar-header bar-dark">
-            <div class="buttons">
-                <button class="button button-icon icon ion-ios-minus-outline"
-                        ng-click="mostrar_borrar = !mostrar_borrar"></button>
-            </div>
-            <div class="buttons">
-                <button class="button button-icon icon ion-ios-plus-outline"
-                        ng-click="vm.abrirModal(1)">
-                </button>
-            </div>
-        </div>
-        <ion-list show-delete="mostrar_borrar">
-            <div style="margin-top: 45px;">
-                <ion-item ng-repeat="cliente in vm.clientes"
-                          item="cliente"
-                          class="item-remove-animate">
-                    <ul>
-                        <li><strong>ID Cliente: </strong>{{ cliente.idcliente }}</li>
-                        <li><strong>Nombre:</strong> {{ cliente.nombre}}</li>
-                        <li><strong>Dirección: </strong>{{ cliente.direccion}}</li>
-                    </ul>
-                    <ion-delete-button class="ion-minus-circled"
-                                       ng-click="vm.eliminar(cliente)">
-                    </ion-delete-button>
-                    <ion-option-button class="button-calm" ng-click="vm.abrirModal(2,cliente)">
-                        Editar
-                    </ion-option-button>
-                </ion-item>
-            </div>
-        </ion-list>
-    </ion-content>
+  <ion-content>
+    <div class="bar bar-header bar-dark">
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-minus-outline"
+                ng-click="mostrar_borrar = !mostrar_borrar"></button>
+      </div>
+      <div class="buttons">
+        <button class="button button-icon icon ion-ios-plus-outline"
+                ng-click="vm.abrirModal(1)">
+        </button>
+      </div>
+    </div>
+    <ion-list show-delete="mostrar_borrar" delegate-handle="clienteHandle">
+      <div style="margin-top: 45px;">
+        <ion-item ng-repeat="cliente in vm.clientes"
+                  item="cliente"
+                  class="item-remove-animate">
+          <ul>
+            <li><strong>ID Cliente: </strong>{{ cliente.idcliente }}</li>
+            <li><strong>Nombre:</strong> {{ cliente.nombre}}</li>
+            <li><strong>Dirección: </strong>{{ cliente.direccion}}</li>
+            <li><strong>Ruta: </strong>{{ cliente.ruta}}</li>
+          </ul>
+          <ion-delete-button class="ion-minus-circled"
+                             ng-click="vm.eliminar(cliente)">
+          </ion-delete-button>
+          <ion-option-button class="button-calm" ng-click="vm.abrirModal(2,cliente)">
+            Editar
+          </ion-option-button>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
 </ion-view>

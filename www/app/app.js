@@ -1,5 +1,6 @@
 angular.module('truckApp', [
   'ionic',
+  'ngCordova',
   'truckApp.Dashboard',
   'truckApp.Ruta',
   'truckApp.Camion',
