@@ -3,9 +3,9 @@
   angular.module('truckApp.Recorridos')
     .controller("recorridosCtrl", recorridosCtrl);
 
-  recorridosCtrl.$inject = ["$firebaseArray", "$ionicModal", "$scope","$ionicListDelegate"];
+  recorridosCtrl.$inject = ["$firebaseArray", "$ionicModal", "$scope", "$ionicListDelegate"];
 
-  function recorridosCtrl($firebaseArray, $ionicModal, $scope,$ionicListDelegate) {
+  function recorridosCtrl($firebaseArray, $ionicModal, $scope, $ionicListDelegate) {
     var vm = this;
 
     vm.get_nombre = get_nombre;
@@ -18,7 +18,7 @@
 
     var custodios_list = [];
     vm.reco = $firebaseArray(recorridos);
-    vm.custodios = $firebaseArray(custodios);
+    vm.custodios = $firebaseArray(custodios.orderByChild("enCamion").equalTo(false));
 
     custodios.on("value", function (x) {
       custodios_list = x.val();
@@ -47,14 +47,37 @@
     }
 
     function add_custodio(id_cust) {
-      console.log(id_cust);
-      recorridos.child(vm.id_reco).child("custodios").child(id_cust).set(true);
+      custodios.child(id_cust).child("enCamion").set(true);
+      firebase.database().ref("recorridos").child(vm.id_reco).child("custodios").child(id_cust).set(true);
       $ionicListDelegate.closeOptionButtons();
       vm.modal.hide();
     }
 
-    function end_reco(id_reco) {
-      recorridos.child(id_reco).child("estado").set(0);
+    /*
+    *
+    * NOTE: No utilice la constante porque esa solo me traera los que tengan estado 0
+    *
+    * */
+    function end_reco(id_reco, recorrido) {
+      var recorridosInt = firebase.database().ref("recorridos");
+
+      // Establecer el recorrido como finalizado, con estado 0
+      recorridosInt.child(id_reco).child("estado").set(0);
+
+      // Establecer la fecha final
+      recorridosInt.child(id_reco).child("fecha_final").set(moment().format("DD-MM-YYYY hh:mm A"));
+
+      // Colocar a los custodios que ya no estan en camion
+      for (var cust in recorrido.custodios) {
+        custodios.child(cust).child("enCamion").set(false);
+      }
+
+      // Colocar a los camiones que ya no estan en ruta
+      for (var cam in recorrido.camiones) {
+        firebase.database().ref("camion").child(cam).child("enRuta").set(false);
+      }
+
+
     }
 
 

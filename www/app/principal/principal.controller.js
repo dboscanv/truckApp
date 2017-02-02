@@ -58,7 +58,7 @@
 
       recorridos.push({
         ruta: vm.idruta,
-        fecha_ini: moment().format("DD-MM-YYYY HH:mm A"),
+        fecha_ini: moment().format("DD-MM-YYYY hh:mm A"),
         custodios: objCust,
         camiones: objCamion,
         estado: 1 //0: inactivo, 1 activo
