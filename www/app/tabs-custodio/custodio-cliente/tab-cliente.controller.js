@@ -17,11 +17,14 @@
     vm.cerrarModal = cerrarModal;
     vm.terminarVisita = terminarVisita;
     vm.open = open;
+    vm.mapa = true;
+    vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBS0Q6D-kScENuk4-cHXrSuf-ekfV495NM";
 
     var q = cliente.orderByChild('ruta').equalTo($stateParams.idRuta);
     const visita = firebase.ref('visita');
 
     vm.clientes = $firebaseArray(q);
+    console.log(vm.clientes)
 
     //Load modal's
     $ionicModal.fromTemplateUrl("app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html", {
@@ -43,7 +46,6 @@
     });
 
     function terminarVisita(idcliente) {
-
 
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       $cordovaGeolocation
@@ -102,11 +104,9 @@
     }
 
     function detalleCliente(cliente) {
-      abrirModal(1);
+      // abrirModal(1);
+      $state.go('detalleCliente', {idCliente: cliente.idcliente});
       vm.cliente = cliente;
     }
-
-    vm.mapa = true;
-
   }
 })(firebase.database());

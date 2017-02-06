@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c0e76ed-bd27-43c8-af8d-b84c9c54971b" name="Default" comment="fix bug views en tabs para la app interna del custodio">
+    <list default="true" id="9c0e76ed-bd27-43c8-af8d-b84c9c54971b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.run.js" afterPath="$PROJECT_DIR$/www/app/app.run.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/principal/configurar.html" afterPath="$PROJECT_DIR$/www/app/principal/configurar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/principal/principal.controller.js" afterPath="$PROJECT_DIR$/www/app/principal/principal.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html" afterPath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.controller.js" afterPath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html" afterPath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js" afterPath="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/manifest.json" afterPath="$PROJECT_DIR$/www/manifest.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,34 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="configurar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/app/principal/configurar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custodios.filter.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/app/principal/custodios.filter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="tab-cliente.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+            <state relative-caret-position="170">
+              <caret line="10" column="69" lean-forward="false" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="69" />
               <folding>
-                <marker date="1486092555017" expanded="true" signature="928:942" ph="..." />
+                <marker date="1486350416650" expanded="true" signature="928:942" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detalle_cliente.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,51 +51,31 @@
       <file leaf-file-name="tab-cliente.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="81" column="17" lean-forward="false" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+            <state relative-caret-position="582">
+              <caret line="106" column="23" lean-forward="false" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
               <folding>
                 <element signature="e#0#52#0" expanded="false" />
-                <marker date="1486334464427" expanded="true" signature="2928:2932" ph="{...}" />
+                <marker date="1486351201298" expanded="true" signature="3135:3138" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <file leaf-file-name="tab-cliente.module.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+            <state relative-caret-position="289">
+              <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="principal.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/app/principal/principal.controller.js">
+      <file leaf-file-name="app-custodio.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/app-custodio.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="71" column="52" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.run.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/app/app.run.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,7 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/www/js/Camion/Camion.controller.js" />
         <option value="$PROJECT_DIR$/www/js/Camion/camion.html" />
         <option value="$PROJECT_DIR$/www/js/Camion/Camion.module.js" />
         <option value="$PROJECT_DIR$/www/js/Clientes/Clientes.module.js" />
@@ -166,25 +135,26 @@
         <option value="$PROJECT_DIR$/www/app/Ruta/modales/editarRuta.html" />
         <option value="$PROJECT_DIR$/www/app/Ruta/modales/crearRuta.html" />
         <option value="$PROJECT_DIR$/www/app/Principal/principal.html" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/app/Principal/principal.module.js" />
         <option value="$PROJECT_DIR$/www/app/run/loginRun.js" />
         <option value="$PROJECT_DIR$/www/app/tabs-custodio/app-custodio.js" />
         <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-ruta/tab-ruta.module.js" />
-        <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js" />
         <option value="$PROJECT_DIR$/www/app/tabs.html" />
         <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-ruta/tab-ruta.html" />
         <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-ruta/tab-ruta.controller.js" />
-        <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html" />
         <option value="$PROJECT_DIR$/www/app/Principal/configurar.html" />
         <option value="$PROJECT_DIR$/www/app/Principal/principal.controller.js" />
         <option value="$PROJECT_DIR$/www/app/tabs-custodio/tab-custodio.html" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/app/principal/configurar.html" />
         <option value="$PROJECT_DIR$/www/app/app.run.js" />
         <option value="$PROJECT_DIR$/www/app/principal/principal.controller.js" />
         <option value="$PROJECT_DIR$/www/manifest.json" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html" />
+        <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html" />
         <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.controller.js" />
+        <option value="$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js" />
       </list>
     </option>
   </component>
@@ -333,6 +303,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="custodio-cliente" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="truckapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="truckapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tabs-custodio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custodio-cliente" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -587,7 +587,7 @@
       <workItem from="1485966086313" duration="558000" />
       <workItem from="1486092398442" duration="1778000" />
       <workItem from="1486221733651" duration="258000" />
-      <workItem from="1486327472675" duration="5518000" />
+      <workItem from="1486327472675" duration="9334000" />
     </task>
     <task id="LOCAL-00001" summary="Color en los modales. Tabs para la app interna del custodio">
       <created>1484094103012</created>
@@ -603,11 +603,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484094933937</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Completo la visita de un cliente con el detalle y geolocalizacion">
+      <created>1486345849223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1486345849223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31268000" />
+    <option name="totallyTimeSpent" value="35084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="920" extended-state="0" />
@@ -651,14 +658,14 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <MESSAGE value="Color en los modales. Tabs para la app interna del custodio" />
     <MESSAGE value="fix bug views en tabs para la app interna del custodio" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug views en tabs para la app interna del custodio" />
+    <MESSAGE value="Completo la visita de un cliente con el detalle y geolocalizacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completo la visita de un cliente con el detalle y geolocalizacion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugins/cordova-plugin-splashscreen/tests/ios/CDVSplashScreenTest/CDVSplashScreenTest.xcodeproj/project.pbxproj" />
     <entry file="file://$PROJECT_DIR$/plugins/cordova-plugin-splashscreen/tests/ios/package.json" />
     <entry file="file://$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
     <entry file="file://$PROJECT_DIR$/config.xml">
@@ -845,24 +852,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/app/Custodio/Custodio.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/app-custodio.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -916,24 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding>
-            <marker date="1486092555017" expanded="true" signature="928:942" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ionic.config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -958,18 +933,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -982,29 +949,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="91" column="68" lean-forward="false" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/app/principal/principal.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
+        <state relative-caret-position="1207">
           <caret line="71" column="52" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.controller.js">
+    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="81" column="17" lean-forward="false" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+        <state relative-caret-position="468">
+          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="69" lean-forward="false" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="69" />
           <folding>
-            <element signature="e#0#52#0" expanded="false" />
-            <marker date="1486334464427" expanded="true" signature="2928:2932" ph="{...}" />
+            <marker date="1486350416650" expanded="true" signature="928:942" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state relative-caret-position="582">
+          <caret line="106" column="23" lean-forward="false" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
+            <marker date="1486351201298" expanded="true" signature="3135:3138" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/custodio-cliente/tab-cliente.module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/tabs-custodio/app-custodio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

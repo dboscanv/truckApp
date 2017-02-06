@@ -12,7 +12,8 @@ angular.module('truckApp', [
   'truckApp.CustodioFinal',
   'truckApp.Recorridos',
   'ngStorage',
-  'firebase'
+  'firebase',
+  'ngMap'
 ])
 
   .run(function ($ionicPlatform) {
