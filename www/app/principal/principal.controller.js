@@ -7,9 +7,9 @@
   angular.module("truckApp.Principal")
     .controller("Principal", Principal);
 
-  Principal.$inject = ['$firebaseArray', '$state', '$firebaseObject'];
+  Principal.$inject = ['$firebaseArray', '$state', '$firebaseObject', '$localStorage'];
 
-  function Principal($firebaseArray, $state, $firebaseObject) {
+  function Principal($firebaseArray, $state, $firebaseObject, $localStorage) {
     var vm = this;
     vm.configurar = configurar;
 
@@ -63,13 +63,13 @@
         camiones: objCamion,
         estado: 1 //0: inactivo, 1 activo
       });
-
+      $localStorage.config = {config: true, idRuta: vm.idruta};
       // Ejemplo, no borrar
       // var newObj = {};
       // newObj["122"] = true;
       // recorridos.child("-KbfXWkIoSJHuNCl4lyK").child("custodios").child("123").set(true);
 
-      $state.go('tab_cliente');
+      $state.go('tab_cliente', {idRuta: vm.idruta});
     }
 
   }

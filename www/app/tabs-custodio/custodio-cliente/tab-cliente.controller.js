@@ -8,9 +8,9 @@
     .module('truckApp.CustodioFinal.Cliente')
     .controller('tab_cliente', clienteCtrl);
 
-  clienteCtrl.$inject = ['$firebaseArray', '$stateParams', '$ionicModal', '$scope', '$cordovaGeolocation'];
+  clienteCtrl.$inject = ['$firebaseArray', '$stateParams', '$ionicModal', '$scope', '$cordovaGeolocation', '$state', '$localStorage', '$timeout'];
 
-  function clienteCtrl($firebaseArray, $stateParams, $ionicModal, $scope, $cordovaGeolocation) {
+  function clienteCtrl($firebaseArray, $stateParams, $ionicModal, $scope, $cordovaGeolocation, $state, $localStorage, $timeout) {
     var vm = this;
     const cliente = firebase.ref("cliente");
     vm.detalleCliente = detalleCliente;
@@ -44,28 +44,43 @@
 
     function terminarVisita(idcliente) {
 
-      visita.push({
-        cantidad: vm.cantidad,
-        observacion: vm.observacion,
-        tipo: vm.tipo,
-        cliente: idcliente,
-        fecha_visita: moment().format("DD-MM-YYYY HH:mm A")
-      });
-
-      cliente.child(idcliente).update({
-        visitado: true
-      });
 
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
-        .then(function (position) {
-          var lat = position.coords.latitude;
-          var long = position.coords.longitude;
-          console.log(position)
-        }, function (err) {
-          console.log(err)
-        });
+        .then(success, error);
+
+      function success(position) {
+        console.log(position);
+
+        visita.push({
+          cantidad: vm.cantidad,
+          observacion: vm.observacion,
+          tipo: vm.tipo,
+          cliente: idcliente,
+          fecha_visita: moment().format("DD-MM-YYYY HH:mm A")
+        }).then(actualizarCliente);
+
+        function actualizarCliente() {
+
+          cliente.child(idcliente).update({
+            visitado: true,
+            latitud: position.coords.latitude,
+            longitud: position.coords.longitude
+          });
+        }
+      }
+
+      function error(err) {
+        console.log(err)
+      }
+
+      $timeout(function () {
+        var config = $localStorage.config;
+        console.log(config)
+        $state.go('tab_cliente', {idRuta: config.idRuta});
+        vm.modal2.hide();
+      }, 2000)
     }
 
     function abrirModal(indice) {

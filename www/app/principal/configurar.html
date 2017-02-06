@@ -21,13 +21,17 @@
           </div>
           <select ng-options="camion as camion.id for camion in vm.camion" ng-model="vm.camion_selec"></select>
         </label>
+
         <label class="item item-input item-select">
           <div class="input-label">
             Custodio
           </div>
-          <select ng-options="custodio as custodio.nombre + ' ' + custodio.apellido for custodio in (vm.list | Custodios_filter)"
-                  ng-model="vm.custodio"></select>
+          <select
+            ng-options="custodio as custodio.nombre + ' ' + custodio.apellido for custodio in (vm.list | Custodios_filter)"
+            ng-model="vm.custodio"></select>
         </label>
+
+
         <label class="item item-input item-select">
           <div class="input-label">
             Ruta
