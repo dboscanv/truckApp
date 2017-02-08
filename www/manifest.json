@@ -1,11 +1,13 @@
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "Planificacion de Rutas",
+  "short_name": "PlaniRut",
   "start_url": "index.html",
   "display": "standalone",
-  "icons": [{
-    "src": "icon.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }]
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }

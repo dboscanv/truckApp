@@ -1,5 +1,6 @@
 angular.module('truckApp', [
   'ionic',
+  'ngCordova',
   'truckApp.Dashboard',
   'truckApp.Ruta',
   'truckApp.Camion',
@@ -12,7 +13,8 @@ angular.module('truckApp', [
   'truckApp.Recorridos',
   'truckApp.reportes',
   'ngStorage',
-  'firebase'
+  'firebase',
+  'ngMap'
 ])
 
   .run(function ($ionicPlatform) {

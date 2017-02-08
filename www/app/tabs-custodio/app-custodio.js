@@ -4,7 +4,8 @@
 (function () {
   angular.module('truckApp.CustodioFinal',
     ['truckApp.CustodioFinal.Ruta',
-      'truckApp.CustodioFinal.Cliente'
+      'truckApp.CustodioFinal.Cliente',
+      'ngMap'
     ])
     .config(routeConfig);
 

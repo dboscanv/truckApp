@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Cliente {{vm.cliente.nombre}} {{vm.cliente.idcliente}}</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <ion-list>
+      <ion-radio ng-model="vm.tipo" ng-value="'recogida'">Recogida</ion-radio>
+      <ion-radio ng-model="vm.tipo" ng-value="'entrega'">Entrega</ion-radio>
+    </ion-list>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Cantidad $</span>
+        <input type="number" placeholder="345342" ng-model="vm.cantidad">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Observación</span>
+        <input type="text" placeholder="Observación" ng-model="vm.observacion">
+      </label>
+    </div>
+
+    <div class="padding">
+      <button class="button button-dark" ng-click="vm.terminarVisita(vm.cliente.idcliente)">Finalizar visita</button>
+    </div>
+  </ion-content>
+</ion-modal-view>
