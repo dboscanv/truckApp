@@ -10,6 +10,7 @@ angular.module('truckApp', [
   'truckApp.Principal',
   'truckApp.CustodioFinal',
   'truckApp.Recorridos',
+  'truckApp.reportes',
   'ngStorage',
   'firebase'
 ])
