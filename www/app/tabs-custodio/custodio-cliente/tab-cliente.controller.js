@@ -104,8 +104,8 @@
     }
 
     function detalleCliente(cliente) {
-      // abrirModal(1);
-      $state.go('detalleCliente', {idCliente: cliente.idcliente});
+      abrirModal(1);
+      // $state.go('detalleCliente', {idCliente: cliente.idcliente});
       vm.cliente = cliente;
     }
   }

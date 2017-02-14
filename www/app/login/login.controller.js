@@ -7,9 +7,9 @@
   angular.module('truckApp.Login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$firebaseArray', '$state', '$rootScope', '$localStorage'];
+  LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$firebaseArray', '$state', '$rootScope',];
 
-  function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state, $rootScope, $localStorage) {
+  function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state, $rootScope) {
     var vm = this;
     var auth = $firebaseAuth();
     var refAdmin = firebase.database().ref('administrador');
@@ -68,7 +68,7 @@
           // var result = snap;
           console.log(snap);
         });
-        $localStorage.usua = $firebaseArray(query);
+        // $localStorage.usua = $firebaseArray(query);
         $state.go('tab.dash');
       }).catch(function (err) {
         console.log(err);
@@ -96,7 +96,7 @@
 
     function cerrarSesion() {
       auth.$signOut();
-      delete $localStorage.usua;
+      // delete $localStorage.usua;
       $state.go('/login');
     }
   }

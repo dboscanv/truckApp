@@ -1,0 +1,35 @@
+<ion-view title="Eliminar Configuración">
+
+  <ion-content style="background-color: gainsboro">
+
+    <div class="bar bar-header bar-dark">
+      <h1 class="title">Configuración</h1>
+    </div>
+    <div style="padding-top: 14%;">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Correo</span>
+          <input type="text" placeholder="Correo" ng-model="vm.email">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Clave</span>
+          <input type="password" placeholder="Clave" ng-model="vm.password">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-dark" ng-click="vm.eliminarConfig()">
+          Eliminar
+        </button>
+        <button class="button button-dark" ng-click="vm.cerrarModal()">
+          Cancelar
+        </button>
+      </div>
+      <!--<a href="" ng-click="vm.abrirModal(2)">-->
+      <!--<small style="margin-left: 34%;">Recuperar contraseña</small>-->
+      <!--</a>-->
+      <!--<button class="button icon ion-compose" ng-click="vm.abrirModal(2)">asdasd</button>-->
+
+    </div>
+  </ion-content>
+</ion-view>
