@@ -51,6 +51,7 @@
     }
 
     function redirect() {
+      vm.modal.hide();
       $state.go('/principal')
     }
 

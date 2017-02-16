@@ -56,9 +56,9 @@
         vm.modal2.hide()
       }
     }
-
-    vm.email = "juansimon18.js@gmail.com";
-    vm.password = "123456";
+    //
+    // vm.email = "juansimon18.js@gmail.com";
+    // vm.password = "123456";
 
 
     function entrar() {
