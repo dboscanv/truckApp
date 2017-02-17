@@ -12,6 +12,7 @@
   function Principal($firebaseArray, $state, $firebaseObject, $localStorage) {
     var vm = this;
     vm.configurar = configurar;
+    vm.changeChekbox = changeChekbox;
 
     // //referencia a la relacion de camion y custodio
     // const cc = firebase.ref('camion-custodio');
@@ -21,6 +22,7 @@
     const camion = firebase.ref("camion");
     const recorridos = firebase.ref("recorridos");
     var arrCust;
+    vm.custodios_selec = [];
 
     //referencia a la coleccion custodio
     const custodio = firebase.ref('custodio');
@@ -31,8 +33,15 @@
     vm.ruta = $firebaseArray(ruta);
     console.log(vm.ruta);
 
+    function changeChekbox(custodio) {
+      if (custodio.checked) {
+        vm.custodios_selec.push(custodio);
+      } else {
+        vm.custodios_selec.splice(vm.custodios_selec.indexOf(custodio), 1);
+      }
+    }
 
-    function configurar(arrCustodios) {
+    function configurar() {
 
 
       //1. Configurar que el camion esta en ruta.
@@ -51,7 +60,7 @@
       var objCust = {};
 
 
-      angular.forEach(arrCustodios, iterarCustodios);
+      angular.forEach(vm.custodios_selec, iterarCustodios);
 
       function iterarCustodios(obj) {
 
@@ -70,7 +79,7 @@
 
       // 3. Crear recorrido
 
-      let rec = recorridos.push({
+      var rec = recorridos.push({
         ruta: vm.idruta,
         fecha_ini: moment().format("DD-MM-YYYY hh:mm A"),
         custodios: objCust,

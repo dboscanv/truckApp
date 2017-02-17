@@ -35,7 +35,7 @@
           <!--</div>-->
 
           <ion-list ng-repeat="custodio in vm.list | filter:false">
-            <ion-checkbox ng-model="vm.custodio[$index]" ng-true-value="{{custodio}}" ng-false-value="">
+            <ion-checkbox ng-model="custodio.checked" ng-change="vm.changeChekbox(custodio)">
               {{custodio.nombre}}
               {{custodio.apellido}}
             </ion-checkbox>
@@ -45,7 +45,7 @@
       <div class="padding">
         <!--<a href="#/tab-custodio/tab-cliente" class="button button-dark">Guardar-->
         <a class="button button-dark" ng-click="vm.configurar(vm.custodio)"
-           ng-disabled="formConfig.$invalid || vm.custodio.length > 0">
+           ng-disabled="formConfig.$invalid || vm.custodios_selec.length == 0">
           Guardar configuración</a>
       </div>
     </form>

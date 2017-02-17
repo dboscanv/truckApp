@@ -50,7 +50,7 @@
     // vm.cliente = $firebaseArray(q);
     // console.log(vm.cliente);
 
-    function terminarVisita(idcliente) {
+    function terminarVisita(cliente) {
 
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       $cordovaGeolocation
@@ -64,14 +64,16 @@
           cantidad: vm.cantidad,
           observacion: vm.observacion,
           tipo: vm.tipo,
-          cliente: idcliente,
+          cliente: cliente.idcliente,
+          nombre: cliente.nombre,
+          direccion: cliente.direccion,
           fecha_visita: moment().format("DD-MM-YYYY HH:mm A"),
           idrecorrido: $localStorage.config.recorrido
         }).then(actualizarCliente);
 
         function actualizarCliente() {
 
-          cliente.child(idcliente).update({
+          cliente.child(cliente.idcliente).update({
             visitado: true,
             latitud: position.coords.latitude,
             longitud: position.coords.longitude
@@ -84,7 +86,7 @@
       }
 
       $timeout(function () {
-        let config = $localStorage.config;
+        var config = $localStorage.config;
         $state.go('tab_cliente', {idRuta: config.idRuta});
         vm.modal2.hide();
       }, 2000)

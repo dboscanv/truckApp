@@ -55,7 +55,7 @@
 
     /*
     *
-    * NOTE: No utilice la constante porque esa solo me traera los que tengan estado 0
+    * NOTE: No utilice la constante porque esa solo me traera los que tengan estado 1
     *
     * */
     function end_reco(id_reco, recorrido) {
