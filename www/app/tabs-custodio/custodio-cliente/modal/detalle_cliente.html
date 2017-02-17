@@ -1,13 +1,12 @@
 <ion-modal-view>
   <ion-header-bar class="bar bar-header bar-dark">
     <h1 class="title">Detalle del Cliente</h1>
-    <button class="button button-clear button-primary"
-            ng-click="vm.cerrarModal(1)">Cerrar
-    </button>
   </ion-header-bar>
   <ion-content class="padding">
     <div class="padding">
-      <button class="button button-dark icon-left ion-clipboard" ng-click="vm.open()">Visitar
+      <button class="button button-dark icon-left ion-clipboard"
+              ng-click="vm.abrirModal()">
+        Visitar
       </button>
     </div>
     <div class="list">
@@ -24,16 +23,13 @@
         <input type="text" placeholder="" ng-model="vm.cliente.direccion" disabled>
       </label>
     </div>
-    <ng-map center="[{{vm.cliente.latitud}}, {{vm.cliente.longitud}}]" zoom="4">
-      <marker position="{{vm.cliente.latitud}},{{vm.cliente.longitud}}" title="{{vm.cliente.nombre}}"></marker>
-    </ng-map>
     <div class="card" ng-if="vm.mapa">
       <div class="item item-text-wrap">
         Ubicación
       </div>
       <div map-lazy-load="https://maps.google.com/maps/api/js"
            map-lazy-load-params="{{googleMapsUrl}}">
-        <ng-map center="[{{vm.cliente.latitud}}, {{vm.cliente.longitud}}]" zoom="4">
+        <ng-map center="[{{vm.cliente.latitud}}, {{vm.cliente.longitud}}]" zoom="14">
           <marker position="{{vm.cliente.latitud}},{{vm.cliente.longitud}}" title="{{vm.cliente.nombre}}"></marker>
         </ng-map>
       </div>

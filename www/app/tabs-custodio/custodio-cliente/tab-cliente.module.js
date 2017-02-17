@@ -17,6 +17,17 @@
             controllerAs: 'vm'
           }
         }
+      })
+      .state('tab_cliente.detalle', {
+        url: '/detalle/:idCliente',
+        parent: 'tab-custodio',
+        views: {
+          'tab_cliente': {
+            templateUrl: 'app/tabs-custodio/custodio-cliente/modal/detalle_cliente.html',
+            controller: 'detalle_cliente',
+            controllerAs: 'vm'
+          }
+        }
       });
   }
 })();

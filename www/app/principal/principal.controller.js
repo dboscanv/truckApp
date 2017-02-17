@@ -42,15 +42,11 @@
         enRuta: true
       });
 
-      // 2. Configurar que el custodio esta en camion.
-      console.log(vm.custodio.$id);
-      debugger;
 
-      // 3. Crear recorrido
-      console.log("CREARA");
+      // console.log("CREARA");
 
       // var objCust = {};
-      // arrCust = [];
+      arrCust = [];
       var objCamion = {};
       var objCust = {};
 
@@ -61,6 +57,9 @@
 
         objCust[obj.$id] = true;
 
+        arrCust.push(obj.$id);
+        // 2. Configurar que el custodio esta en camion.
+
         custodio.child(obj.$id)
           .update({
             enCamion: true
@@ -69,6 +68,8 @@
 
       objCamion[vm.camion_selec.$id] = true;
 
+      // 3. Crear recorrido
+
       let rec = recorridos.push({
         ruta: vm.idruta,
         fecha_ini: moment().format("DD-MM-YYYY hh:mm A"),
@@ -76,9 +77,13 @@
         camiones: objCamion,
         estado: 1 //0: inactivo, 1 activo
       });
-      // console.log(rec.key());
 
-      $localStorage.config = {config: true, idRuta: vm.idruta, recorrido: rec};
+      $localStorage.config = {
+        config: true,
+        idRuta: vm.idruta,
+        recorrido: rec.key,
+        custodios: arrCust
+      };
       // $localStorage.config = {config: true, idRuta: vm.idruta, recorrido: rec.key()};
       // Ejemplo, no borrar
       // var newObj = {};

@@ -10,9 +10,12 @@
 
   function loginRun($rootScope, $state, $localStorage) {
 
-    $rootScope.$on('$stateChangeSuccess', function () {
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       var config = $localStorage.config;
-      (typeof $localStorage.config != "undefined") ? $state.go('tab_cliente', {idRuta: config.idRuta}) : console.log("nadas")
+      // (typeof $localStorage.config != "undefined") ? $state.go('tab_cliente', {idRuta: config.idRuta}) : console.log("nadas")
+      if (typeof $localStorage.config != "undefined" && toState.name != "tab_cliente.detalle") {
+        $state.go('tab_cliente', {idRuta: config.idRuta})
+      }
     });
 
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {

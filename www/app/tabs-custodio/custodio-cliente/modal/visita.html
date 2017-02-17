@@ -1,6 +1,9 @@
 <ion-modal-view>
   <ion-header-bar class="bar bar-header bar-dark">
     <h1 class="title">Cliente {{vm.cliente.nombre}} {{vm.cliente.idcliente}}</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.cerrarModal()">Cancelar
+    </button>
   </ion-header-bar>
   <ion-content class="padding">
     <ion-list>

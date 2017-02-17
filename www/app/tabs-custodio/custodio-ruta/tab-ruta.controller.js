@@ -41,6 +41,11 @@
     }
 
     function success() {
+      angular.forEach($localStorage.config.custodios, function (obj) {
+        firebase.ref('custodio/' + obj)
+          .update({enCamion: false})
+      });
+
       delete $localStorage.config;
       auth.$signOut();
       $timeout(redirect, 1500);
