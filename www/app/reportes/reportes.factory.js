@@ -3,24 +3,20 @@
   angular.module('truckApp.reportes')
     .factory("reportesFactory", reportesFactory);
 
-  reportesFactory.$inject = [];
+  reportesFactory.$inject = ["$cordovaFileTransfer"];
 
-  function reportesFactory() {
+  function reportesFactory($cordovaFileTransfer) {
     return {
-      generarPDF: function (columnas, datos, tituloReporte) {
-        // if (datos.length <= 0) {
-        //   swal("ATENCIÓN", "No hay información parar imprimir, verifique y vuelva a intentarlo", "info");
-        //   return null;
-        // }
+      generarPDF: function (columnas, datos, idruta, fecha_ini, fecha_final, custodios) {
         var doc = new jsPDF('p', 'pt');
         var fecha = moment().format("DD/MM/YYYY hh:mm:ss A");
 
         var totalPagesExp = "{total_pages_count_string}";
         doc.autoTable(columnas, datos, {
-          theme: 'striped',
+          theme: 'grid',
           tableWidth: 'auto',
           styles: {
-            fontSize: 7,
+            fontSize: 10,
             font: 'Arial',
             lineWidth: 0.5,
             rowHeight: 20,
@@ -39,20 +35,29 @@
             overflow: 'linebreak'
           },
           headerStyles: {
-            fillColor: [0, 74, 136]
+            fillColor: [158, 158, 158],
+            textColor: [0, 0, 0],
+            fontSize: 12
           },
           margin: {top: 150},
           beforePageContent: function (data) {
             doc.setTextColor(0, 0, 0);
             doc.setFontSize(16);
-            doc.text(40, 60, 'truckApp');
+            doc.text(40, 60, 'LISTADO DE RECORRIDO OPERATIVO');
             doc.setFontSize(12);
-            doc.text(40, 75, "truckApp, C.A");
-            doc.text(40, 90, 'J-XXXXXXXXX-9');
-            doc.setTextColor(0, 20, 137);
-            doc.text(40, 105, tituloReporte);
+            doc.text(40, 75, 'RUTA # ' + idruta);
+            doc.text(40, 90, "Fecha inicial: " + fecha_ini);
+            doc.text(40, 105, "Fecha final: " + fecha_final);
             doc.setTextColor(0, 0, 0);
-            // doc.text(40, 120, );
+            //Listado de custodios
+            doc.text(420, 60, "CUSTODIOS:");
+            for (var x = 0; x < custodios.length; x++) {
+              var dist = 60;
+              dist += 22;
+              doc.text(420, dist, custodios[x]);
+            }
+
+            //doc.text(40, 120, );
             // doc.addImage(logoB64, 'JPG', 330, 1, 230, 145); TODO agregar imagen
             // doc.setFontSize(12);
             // doc.text('Nombre vendedor: ' + security.ObtenerNombre(), data.settings.margin.left, data.settings.margin.top - 10);
@@ -64,8 +69,8 @@
               str = str + " de " + totalPagesExp + " | Emisión: " + fecha;
             }
 
-            // doc.setFontSize(7);
-            // doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 30);
+            doc.setFontSize(10);
+            doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 30);
             // doc.text("Usuario: " + user.nombre + " " + user.apellido + " | Cargo: " + user.cargo, data.settings.margin.right + 350, doc.internal.pageSize.height - 30);
 
           }
@@ -75,9 +80,19 @@
           doc.putTotalPages(totalPagesExp);
         }
 
-        //Descarga TODO colocarlo como Ventor_Sales
-        doc.save('reporte.pdf'); //Exportar el pdf con una URL
+        // //Descarga
+        var url = doc.output('datauristring'); //Exportar el pdf con una URL
 
+        var targetPath = cordova.file.documentsDirectory + "reporte.pdf";
+        var trustHosts = true;
+        var options = {};
+
+        $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+          .then(function (result) {
+            alert("Reporte exportado correctamente");
+          }, function (err) {
+            alert("Error exportando el reporte");
+          });
       }
     }
 
