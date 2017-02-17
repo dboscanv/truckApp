@@ -26,3 +26,7 @@ a:active {
 .visitado {
   background-color: #4CAF50;
 }
+
+label.item.has-error {
+  border-bottom: 2px solid red;
+}

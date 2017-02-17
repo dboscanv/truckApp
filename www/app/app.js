@@ -14,7 +14,8 @@ angular.module('truckApp', [
   'truckApp.reportes',
   'ngStorage',
   'firebase',
-  'ngMap'
+  'ngMap',
+  'ngMessages'
 ])
 
   .run(function ($ionicPlatform) {

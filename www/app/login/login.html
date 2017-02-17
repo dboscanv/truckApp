@@ -6,26 +6,30 @@
       <h1 class="title">Planificacion de Rutas</h1>
       <button class="button icon ion-person-add" ng-click="vm.abrirModal(1)"></button>
     </div>
-    <div style="padding-top: 14%;">
-      <div class="list">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Correo</span>
-          <input type="text" placeholder="Correo" ng-model="vm.email">
-        </label>
+    <form name="loginForm">
+      <div style="padding-top: 14%;">
+        <div class="list">
+          <label class="item item-input item-floating-label" ng-class="{'has-error':loginForm.emailForm.$invalid}"
+                 required>
+            <span class="input-label">Correo</span>
+            <input type="text" placeholder="Correo" name="emailForm" ng-model="vm.email">
+          </label>
 
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Clave</span>
-          <input type="password" placeholder="Clave" ng-model="vm.password">
-        </label>
-      </div>
-      <div class="padding">
-        <button class="button button-block button-dark" ng-click="vm.entrar()">Iniciar Sesion</button>
-      </div>
-      <a href="" ng-click="vm.abrirModal(2)">
-        <small style="margin-left: 34%;">Recuperar contraseña</small>
-      </a>
-      <!--<button class="button icon ion-compose" ng-click="vm.abrirModal(2)">asdasd</button>-->
+          <label class="item item-input item-floating-label" ng-class="{'has-error':loginForm.passForm.$invalid}"
+                 required>
+            <span class="input-label">Clave</span>
+            <input type="password" placeholder="Clave" name="passForm" ng-model="vm.password">
+          </label>
+        </div>
+        <div class="padding">
+          <button class="button button-block button-dark" ng-click="vm.entrar()">Iniciar Sesion</button>
+        </div>
+        <a href="" ng-click="vm.abrirModal(2)" ng-disabled="loginForm.$invalid">
+          <small style="margin-left: 34%;">Recuperar contraseña</small>
+        </a>
+        <!--<button class="button icon ion-compose" ng-click="vm.abrirModal(2)">asdasd</button>-->
 
-    </div>
+      </div>
+    </form>
   </ion-content>
 </ion-view>

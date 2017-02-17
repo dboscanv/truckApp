@@ -6,37 +6,74 @@
     </button>
   </ion-header-bar>
   <ion-content class="padding">
-    <div class="list">
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Nro. Empleado</span>
-        <input type="text" placeholder="Nro Empleado" ng-model="vm.admin.idempleado">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Nombre</span>
-        <input type="text" placeholder="Juan" ng-model="vm.admin.nombre">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Apellido</span>
-        <input type="text" placeholder="Perez" ng-model="vm.admin.apellido">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Cargo</span>
-        <input type="text" placeholder="Administrador I" ng-model="vm.admin.cargo">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Correo</span>
-        <input type="email" placeholder="correo@arroba.com" ng-model="vm.admin.email">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Clave</span>
-        <input type="password" placeholder="12345678" ng-model="vm.admin.password">
-      </label>
-    </div>
-    <div class="padding">
-      <button class="button button-block button-dark"
-              ng-click="vm.registrar()">
-        Registar
-      </button>
-    </div>
+    <form name="registroForm">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nro. Empleado</span>
+          <input type="text" placeholder="Nro Empleado" ng-model="vm.admin.idempleado"
+                 required
+                 ng-minlength="3"
+                 ng-maxlength="6"
+                 name="idForm"
+          >
+        </label>
+        <div ng-messages="registroForm.idForm.$error">
+          <p ng-message="required" style="color:red">Campo requerido</p>
+          <p ng-message="minlength" style="color:red">Muy corto</p>
+          <p ng-message="maxlength" style="color:red">Muy largo</p>
+        </div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="Juan" ng-model="vm.admin.nombre"
+                 required
+                 ng-minlength="3"
+                 ng-maxlength="13"
+                 name="nombreForm">
+        </label>
+        <div ng-messages="registroForm.nombreForm.$error">
+          <p ng-message="required" style="color:red">Campo requerido</p>
+          <p ng-message="minlength" style="color:red">Muy corto</p>
+          <p ng-message="maxlength" style="color:red">Muy largo</p>
+        </div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Apellido</span>
+          <input type="text" placeholder="Perez" ng-model="vm.admin.apellido"
+                 required
+                 ng-minlength="3"
+                 ng-maxlength="15"
+                 name="apellidoForm">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Cargo</span>
+          <input type="text" placeholder="Administrador I" ng-model="vm.admin.cargo"
+                 required
+                 ng-minlength="5"
+                 ng-maxlength="10"
+                 name="cargoForm">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Correo</span>
+          <input type="email" placeholder="correo@arroba.com" ng-model="vm.admin.email"
+                 required
+                 ng-minlength="5"
+                 ng-maxlength="20"
+                 name="emailForm">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Clave</span>
+          <input type="password" placeholder="12345678" ng-model="vm.admin.password"
+                 required
+                 ng-minlength="4"
+                 ng-maxlength="8"
+                 name="passForm">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-dark"
+                ng-click="vm.registrar()" ng-disabled="loginForm.$invalid">
+          Registar
+        </button>
+      </div>
+    </form>
   </ion-content>
 </ion-modal-view>

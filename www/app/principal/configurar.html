@@ -1,57 +1,53 @@
-<ion-view title="Configuracion">
+<ion-view title="Configuración">
   <ion-content style="background-color: gainsboro">
-    <div class="padding">
+    <form name="formConfig" novalidate>
 
-      <!--<div class="list list-inset">-->
-      <!--<label class="item item-input">-->
-      <!--<input type="text" placeholder="Camion" ng-model="vm.idcamion">-->
-      <!--</label>-->
-      <!--</div>-->
-      <!--<div class="list list-inset">-->
-      <!--<label class="item item-input">-->
-      <!--<input type="text" placeholder="Ruta" ng-model="vm.ruta">-->
-      <!--</label>-->
-      <!--</div>-->
+      <div class="padding">
 
-      <div class="list">
+        <div class="list">
+          <label class="item item-input item-select" ng-class="{'has-error':formConfig.camionForm.$invalid}">
+            <div class="input-label">
+              Camion
+            </div>
+            <select ng-options="camion as camion.id for camion in vm.camion"
+                    name="camionForm" required
+                    ng-model="vm.camion_selec"></select>
+          </label>
+          <!--<div ng-messages="formConfig.camionForm.$error">-->
+          <!--<div ng-message="required" style="color:red">-->
+          <!--<p>Campo requerido</p>-->
+          <!--</div>-->
+          <!--</div>-->
 
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Camion
-          </div>
-          <select ng-options="camion as camion.id for camion in vm.camion" ng-model="vm.camion_selec"></select>
-        </label>
+          <label class="item item-input item-select" ng-class="{'has-error':formConfig.rutaForm.$invalid}">
+            <div class="input-label">
+              Ruta
+            </div>
+            <select ng-options="ruta.idruta as ruta.nombre for ruta in vm.ruta"
+                    name="rutaForm" required
+                    ng-model="vm.idruta">
+            </select>
+          </label>
+          <!--<div ng-messages="formConfig.rutaForm.$error">-->
+          <!--<div ng-message="required" style="color:red">-->
+          <!--<p>Campo requerido</p>-->
+          <!--</div>-->
+          <!--</div>-->
 
-        <!--<label class="item item-input item-select">-->
-        <!--<div class="input-label">-->
-        <!--Custodio-->
-        <!--</div>-->
-        <!--&lt;!&ndash;<select&ndash;&gt;-->
-        <!--&lt;!&ndash;ng-options="custodio as custodio.nombre + ' ' + custodio.apellido for custodio in (vm.list | Custodios_filter)"&ndash;&gt;-->
-        <!--&lt;!&ndash;ng-model="vm.custodio"></select>&ndash;&gt;-->
-        <!--</label>-->
-
-
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Ruta
-          </div>
-          <select ng-options="ruta.idruta as ruta.nombre for ruta in vm.ruta" ng-model="vm.idruta">
-          </select>
-        </label>
-
-        <ion-list ng-repeat="custodio in vm.list | filter:false">
-          <ion-checkbox ng-model="vm.custodio[$index]" ng-true-value="{{custodio}}" ng-false-value="null">
-            {{custodio.nombre}}
-            {{custodio.apellido}}
-          </ion-checkbox>
-        </ion-list>
+          <ion-list ng-repeat="custodio in vm.list | filter:false">
+            <ion-checkbox ng-model="vm.custodio[$index]" ng-true-value="{{custodio}}" ng-false-value="">
+              {{custodio.nombre}}
+              {{custodio.apellido}}
+            </ion-checkbox>
+          </ion-list>
+        </div>
       </div>
-    </div>
-    <div class="padding">
-      <!--<a href="#/tab-custodio/tab-cliente" class="button button-dark">Guardar-->
-      <a class="button button-dark" ng-click="vm.configurar(vm.custodio)">Guardar
-        configuracion</a>
-    </div>
+      <div class="padding">
+        <!--<a href="#/tab-custodio/tab-cliente" class="button button-dark">Guardar-->
+        <a class="button button-dark" ng-click="vm.configurar(vm.custodio)"
+           ng-disabled="formConfig.$invalid || vm.custodio.length > 0">
+          Guardar configuración</a>
+      </div>
+    </form>
   </ion-content>
 </ion-view>
