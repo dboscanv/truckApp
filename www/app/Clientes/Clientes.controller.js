@@ -1,5 +1,4 @@
 (function () {
-  "use strict";
 
   angular.module("truckApp.Clientes")
     .controller("ClientesCtrl", ClientesCtrl);

@@ -7,9 +7,9 @@
   angular.module('truckApp.Login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$firebaseArray', '$state', '$rootScope',];
+  LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$firebaseArray', '$state', '$rootScope', '$localStorage'];
 
-  function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state, $rootScope) {
+  function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state, $rootScope, $localStorage) {
     var vm = this;
     var auth = $firebaseAuth();
     var refAdmin = firebase.database().ref('administrador');
@@ -56,6 +56,7 @@
         vm.modal2.hide()
       }
     }
+
     //
     // vm.email = "juansimon18.js@gmail.com";
     // vm.password = "123456";
@@ -68,7 +69,7 @@
           // var result = snap;
           console.log(snap);
         });
-        // $localStorage.usua = $firebaseArray(query);
+        $localStorage.usua = $firebaseArray(query);
         $state.go('tab.dash');
       }).catch(function (err) {
         console.log(err);
@@ -78,7 +79,7 @@
 
     function registrar() {
       auth.$createUserWithEmailAndPassword(vm.admin.email, vm.admin.password).catch(function (err) {
-        console.log(err)
+        console.log(JSON.stringify(err))
       });
       refAdmin.child(vm.admin.idempleado).set(vm.admin);
       vm.cerrarModal(1);
@@ -96,8 +97,8 @@
 
     function cerrarSesion() {
       auth.$signOut();
-      // delete $localStorage.usua;
-      $state.go('/login');
+      delete $localStorage.usua;
+      $state.go('/principal');
     }
   }
 })();

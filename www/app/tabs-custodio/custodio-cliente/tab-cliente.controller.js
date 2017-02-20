@@ -2,7 +2,6 @@
  * Created by eldelasfranelas on 10/01/2017.
  */
 (function (firebase) {
-  'use strict';
 
   angular
     .module('truckApp.CustodioFinal.Cliente')

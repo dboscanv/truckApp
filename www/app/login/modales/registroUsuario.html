@@ -24,7 +24,7 @@
         </div>
         <label class="item item-input item-floating-label">
           <span class="input-label">Nombre</span>
-          <input type="text" placeholder="Juan" ng-model="vm.admin.nombre"
+          <input type="text" placeholder="Nombre" ng-model="vm.admin.nombre"
                  required
                  ng-minlength="3"
                  ng-maxlength="13"
@@ -37,7 +37,7 @@
         </div>
         <label class="item item-input item-floating-label">
           <span class="input-label">Apellido</span>
-          <input type="text" placeholder="Perez" ng-model="vm.admin.apellido"
+          <input type="text" placeholder="Apellido" ng-model="vm.admin.apellido"
                  required
                  ng-minlength="3"
                  ng-maxlength="15"
@@ -45,7 +45,7 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Cargo</span>
-          <input type="text" placeholder="Administrador I" ng-model="vm.admin.cargo"
+          <input type="text" placeholder="Cargo" ng-model="vm.admin.cargo"
                  required
                  ng-minlength="5"
                  ng-maxlength="10"
@@ -53,7 +53,7 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Correo</span>
-          <input type="email" placeholder="correo@arroba.com" ng-model="vm.admin.email"
+          <input type="email" placeholder="Correo" ng-model="vm.admin.email"
                  required
                  ng-minlength="5"
                  ng-maxlength="20"
@@ -61,7 +61,7 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Clave</span>
-          <input type="password" placeholder="12345678" ng-model="vm.admin.password"
+          <input type="password" placeholder="Clave" ng-model="vm.admin.password"
                  required
                  ng-minlength="4"
                  ng-maxlength="8"
@@ -70,7 +70,7 @@
       </div>
       <div class="padding">
         <button class="button button-block button-dark"
-                ng-click="vm.registrar()" ng-disabled="loginForm.$invalid">
+                ng-click="vm.registrar()">
           Registar
         </button>
       </div>
