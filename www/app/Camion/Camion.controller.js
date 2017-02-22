@@ -65,6 +65,9 @@
     }
 
     function GuardarCamion() {
+      if (vm.camiones.$getRecord(vm.camion.id) != null) {
+        return alert("Nro de camion ya esta registrado")
+      }
       camion.child(vm.camion.id).set(vm.camion).then(function (ref) {
         console.log(ref);
         console.log("Añadido!");

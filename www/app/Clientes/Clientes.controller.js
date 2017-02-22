@@ -66,9 +66,10 @@
 
     function GuardarCliente() {
       //Guardar el cliente
+      if (vm.clientes.$getRecord(vm.cliente.idcliente) != null) {
+        return alert("Nro de cliente ya esta registrado")
+      }
       cliente.child(vm.cliente.idcliente).set(vm.cliente).then(function (ref) {
-        console.log(ref);
-        console.log("Añadido!");
         vm.modal1.hide();
       });
     }
