@@ -1,30 +1,79 @@
 <ion-modal-view>
-    <ion-header-bar class="bar bar-header bar-dark">
-        <h1 class="title">Crear camión</h1>
-        <button class="button button-clear button-primary"
-                ng-click="vm.cerrarModal(1)">Cancelar
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Crear camión</h1>
+    <button class="button button-clear button-primary"
+            ng-click="vm.cerrarModal(1)">Cancelar
+    </button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form name="truck">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nro. Camión</span>
+          <input type="text" placeholder="Nro. Camión"
+                 ng-model="vm.camion.id"
+                 ng-minlength="3"
+                 ng-maxlength="6"
+                 ng-pattern="/^[0-9]+$/"
+                 name="truckId"
+                 required
+          >
+          <div ng-messages="truck.truckId.$error"
+               ng-show="truck.truckId.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo se permiten numeros</p>
+              <p ng-message="maxlength">Máximo 6 caracteres</p>
+              <p ng-message="minlength">Minimo 3 caracteres</p>
+            </div>
+          </div>
+
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Cantidad</span>
+          <input type="number" placeholder="Cantidad"
+                 ng-model="vm.camion.cantidad"
+                 name="truckCantidad"
+                 ng-minlength="1"
+                 ng-maxlength="10"
+                 ng-pattern="/^[0-9]+$/"
+                 required
+          >
+          <div ng-messages="truck.truckCantidad.$error"
+               ng-show="truck.truckCantidad.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo se permiten numeros</p>
+              <p ng-message="maxlength">Máximo 6 caracteres</p>
+              <p ng-message="minlength">Minimo 3 caracteres</p>
+            </div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Capacidad</span>
+          <input type="number" placeholder="Capacidad"
+                 ng-model="vm.camion.capacidad"
+                 name="truckCapacidad"
+                 ng-minlength="1"
+                 ng-maxlength="10"
+                 ng-pattern="/^[0-9]+$/"
+                 required
+          >
+          <div ng-messages="truck.truckCapacidad.$error"
+               ng-show="truck.truckCapacidad.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo se permiten numeros</p>
+              <p ng-message="maxlength">Máximo 6 caracteres</p>
+              <p ng-message="minlength">Minimo 3 caracteres</p>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive"
+                ng-click="vm.guardarCamion()" ng-disabled="truck.$invalid ||
+                vm.camion.cantidad > vm.camion.capacidad">
+          Registar
         </button>
-    </ion-header-bar>
-    <ion-content class="padding">
-        <div class="list">
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Nro. Camión</span>
-                <input type="number" placeholder="Nro. Camión" ng-model="vm.camion.id">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Cantidad</span>
-                <input type="number" placeholder="Cantidad" ng-model="vm.camion.cantidad">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Capacidad</span>
-                <input type="number" placeholder="Capacidad" ng-model="vm.camion.capacidad">
-            </label>
-        </div>
-        <div class="padding">
-            <button class="button button-block button-positive"
-                    ng-click="vm.guardarCamion()">
-                Registar
-            </button>
-        </div>
-    </ion-content>
+      </div>
+    </form>
+  </ion-content>
 </ion-modal-view>
