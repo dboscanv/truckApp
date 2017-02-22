@@ -14,50 +14,61 @@
                  required
                  ng-minlength="3"
                  ng-maxlength="6"
+                 ng-pattern="/^[0-9]+$/"
                  name="idForm"
           >
+          <div ng-messages="registroForm.idForm.$error" ng-show="registroForm.idForm.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo se permiten numeros</p>
+            </div>
+          </div>
         </label>
-        <div ng-messages="registroForm.idForm.$error">
-          <p ng-message="required" style="color:red">Campo requerido</p>
-          <p ng-message="minlength" style="color:red">Muy corto</p>
-          <p ng-message="maxlength" style="color:red">Muy largo</p>
-        </div>
         <label class="item item-input item-floating-label">
           <span class="input-label">Nombre</span>
           <input type="text" placeholder="Nombre" ng-model="vm.admin.nombre"
                  required
                  ng-minlength="3"
-                 ng-maxlength="13"
+                 ng-maxlength="50"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  name="nombreForm">
+          <div ng-messages="registroForm.nombreForm.$error" ng-show="registroForm.nombreForm.$touched">
+            <div ng-messages-include="error-messages"></div>
+          </div>
         </label>
-        <div ng-messages="registroForm.nombreForm.$error">
-          <p ng-message="required" style="color:red">Campo requerido</p>
-          <p ng-message="minlength" style="color:red">Muy corto</p>
-          <p ng-message="maxlength" style="color:red">Muy largo</p>
-        </div>
+
         <label class="item item-input item-floating-label">
           <span class="input-label">Apellido</span>
           <input type="text" placeholder="Apellido" ng-model="vm.admin.apellido"
                  required
                  ng-minlength="3"
-                 ng-maxlength="15"
+                 ng-maxlength="50"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  name="apellidoForm">
+          <div ng-messages="registroForm.apellidoForm.$error" ng-show="registroForm.apellidoForm.$touched">
+            <div ng-messages-include="error-messages"></div>
+          </div>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Cargo</span>
-          <input type="text" placeholder="Cargo" ng-model="vm.admin.cargo"
+          <input type="text" placeholder="Cargo" ng-change="vm.cambio()" ng-model="vm.admin.cargo"
                  required
                  ng-minlength="5"
-                 ng-maxlength="10"
+                 ng-maxlength="50"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  name="cargoForm">
+          <div ng-messages="registroForm.cargoForm.$error" ng-show="registroForm.cargoForm.$touched">
+            <div ng-messages-include="error-messages"></div>
+          </div>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Correo</span>
           <input type="email" placeholder="Correo" ng-model="vm.admin.email"
                  required
-                 ng-minlength="5"
-                 ng-maxlength="20"
+                 ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/"
                  name="emailForm">
+          <div ng-messages="registroForm.emailForm.$error" ng-show="registroForm.emailForm.$touched">
+            <div ng-messages-include="error-messages"></div>
+          </div>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Clave</span>
@@ -66,11 +77,14 @@
                  ng-minlength="4"
                  ng-maxlength="8"
                  name="passForm">
+          <div ng-messages="registroForm.passForm.$error" ng-show="registroForm.passForm.$touched">
+            <div ng-messages-include="error-messages"></div>
+          </div>
         </label>
       </div>
       <div class="padding">
         <button class="button button-block button-dark"
-                ng-click="vm.registrar()">
+                ng-click="vm.registrar()" ng-disabled="registroForm.$invalid">
           Registar
         </button>
       </div>

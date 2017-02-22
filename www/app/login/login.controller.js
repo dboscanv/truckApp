@@ -82,12 +82,13 @@
         console.log(JSON.stringify(err))
       });
       refAdmin.child(vm.admin.idempleado).set(vm.admin);
+      alert("Usuario registrado con exito!");
       vm.cerrarModal(1);
     }
 
     function recuperarClave() {
       auth.$sendPasswordResetEmail(vm.email).then(function () {
-        alert("Correo enviado con exito")
+        alert("Correo enviado con exito");
         vm.modal2.hide();
       }).catch(function (err) {
         vm.modal2.hide();

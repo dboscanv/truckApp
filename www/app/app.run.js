@@ -6,9 +6,13 @@
     .module('truckApp')
     .run(loginRun);
 
-  loginRun.$inject = ['$rootScope', '$state', '$localStorage'];
+  loginRun.$inject = ['$rootScope', '$state', '$localStorage', "$http", "$templateCache"];
 
-  function loginRun($rootScope, $state, $localStorage) {
+  function loginRun($rootScope, $state, $localStorage,$http,$templateCache) {
+
+    $http.get("app/messages-comun.html").then(function (response) {
+      $templateCache.put("error-messages", response.data);
+    });
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       var config = $localStorage.config;

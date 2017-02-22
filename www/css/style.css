@@ -1,4 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+.redBg{
+  color: red !important;
+}
+
 .centrar-titulo {
   text-align: center !important;
 }
