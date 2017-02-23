@@ -7,29 +7,88 @@
   </ion-header-bar>
   <ion-content class="padding">
     <div class="list">
-      <label class="item item-input item-floating-label">
-        <span class="input-label">ID Cliente</span>
-        <input type="number" placeholder="ID Cliente" ng-model="vm.cliente.idcliente">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Nombre</span>
-        <input type="text" placeholder="Cantidad" ng-model="vm.cliente.nombre">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Dirección</span>
-        <input type="text" placeholder="Dirección" ng-model="vm.cliente.direccion">
-      </label>
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Ruta
-        </div>
-        <select ng-options="ruta.nombre as ruta.$id for ruta in vm.rutas" ng-model="vm.cliente.ruta">
-        </select>
-      </label>
+      <form name="client">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">ID Cliente</span>
+          <input type="number" placeholder="ID Cliente"
+                 ng-model="vm.cliente.idcliente"
+                 name="clientid"
+                 ng-minlength="1"
+                 ng-maxlength="10"
+                 ng-pattern="/^[0-9]+$/"
+                 required
+          >
+          <div ng-messages="client.clientid.$error"
+               ng-show="client.clientid.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo se permiten números</p>
+              <p ng-message="maxlength">Máximo 6 caracteres</p>
+              <p ng-message="minlength">Minimo 3 caracteres</p>
+              <p ng-message="required">Campo requerido</p>
+
+            </div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="Cantidad"
+                 ng-model="vm.cliente.nombre"
+                 name="clientname"
+                 ng-minlength="5"
+                 ng-maxlength="20"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                 required>
+          <div ng-messages="client.clientname.$error"
+               ng-show="client.clientname.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo letras</p>
+              <p ng-message="maxlength">Máximo 20 caracteres</p>
+              <p ng-message="minlength">Minimo 5 caracteres</p>
+              <p ng-message="required">Campo requerido</p>
+
+            </div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Dirección</span>
+          <input type="text" placeholder="Dirección"
+                 ng-model="vm.cliente.direccion"
+                 name="clientdir"
+                 ng-minlength="5"
+                 ng-maxlength="40"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                 required>
+          <div ng-messages="client.clientdir.$error"
+               ng-show="client.clientdir.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="pattern">Solo letras</p>
+              <p ng-message="required">Campo requerido</p>
+              <p ng-message="maxlength">Máximo 40 caracteres</p>
+              <p ng-message="minlength">Minimo 5 caracteres</p>
+            </div>
+          </div>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Ruta
+          </div>
+          <select ng-options="ruta.nombre as ruta.$id for ruta in vm.rutas"
+                  ng-model="vm.cliente.ruta"
+                  name="clientruta"
+                  required>
+          </select>
+          <div ng-messages="client.clientruta.$error"
+               ng-show="client.clientruta.$touched">
+            <div ng-messages-include="error-messages">
+              <p ng-message="required">Campo requerido</p>
+            </div>
+          </div>
+        </label>
+      </form>
     </div>
     <div class="padding">
       <button class="button button-block button-positive"
-              ng-click="vm.guardarCliente()">
+              ng-click="vm.guardarCliente()" ng-disabled="client.$invalid">
         Registar
       </button>
     </div>

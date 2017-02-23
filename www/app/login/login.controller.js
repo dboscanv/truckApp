@@ -80,10 +80,14 @@
     function registrar() {
       auth.$createUserWithEmailAndPassword(vm.admin.email, vm.admin.password).catch(function (err) {
         console.log(JSON.stringify(err))
+      }).then(function (success) {
+        refAdmin.child(vm.admin.idempleado).set(vm.admin);
+        alert("Usuario registrado con exito!");
+        vm.cerrarModal(1);
+      }).catch(function (e) {
+        console.log(e);
+        vm.cerrarModal(1);
       });
-      refAdmin.child(vm.admin.idempleado).set(vm.admin);
-      alert("Usuario registrado con exito!");
-      vm.cerrarModal(1);
     }
 
     function recuperarClave() {

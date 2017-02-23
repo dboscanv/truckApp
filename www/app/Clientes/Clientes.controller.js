@@ -62,6 +62,7 @@
       } else {
         vm.modal2.hide();
       }
+      vm.cliente = {};
     }
 
     function GuardarCliente() {
