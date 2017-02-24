@@ -58,27 +58,42 @@
 
     function CerrarModal(index) {
       if (index == 1) {
+        vm.camion = {};
+
         vm.modal1.hide();
       } else {
         vm.modal2.hide();
+        vm.camion = {};
+
       }
     }
 
     function GuardarCamion() {
-      camion.child(vm.camion.id).set(vm.camion).then(function (ref) {
-        console.log(ref);
-        console.log("Añadido!");
-        vm.modal1.hide();
-      });
+      if (vm.camiones.$getRecord(vm.camion.id) != null) {
+        return alert("Nro de camion ya esta registrado")
+      }
+      if (vm.camion.cantidad > vm.camion.capacidad) {
+        return alert("La capacidad supera a la cantidad")
+      } else {
+        camion.child(vm.camion.id).set(vm.camion).then(function (ref) {
+          console.log(ref);
+          console.log("Añadido!");
+          vm.modal1.hide();
+        });
+      }
     }
 
     function Editar() {
-      vm.camiones.$save(vm.camion).then(function (ref) {
-        alert("Actualizado!");
-        vm.modal2.hide();
-      }, function (error) {
-        console.log(error);
-      });
+      if (vm.camion.cantidad > vm.camion.capacidad) {
+        return alert("La capacidad supera a la cantidad")
+      } else {
+        vm.camiones.$save(vm.camion).then(function (ref) {
+          alert("Actualizado!");
+          vm.modal2.hide();
+        }, function (error) {
+          console.log(error);
+        });
+      }
     }
 
 

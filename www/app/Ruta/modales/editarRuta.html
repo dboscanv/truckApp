@@ -7,22 +7,58 @@
   </ion-header-bar>
   <ion-content class="padding">
     <div class="list">
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Nro. Ruta</span>
-        <input type="text" placeholder="Nro Ruta" ng-model="vm.ruta.idruta">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Nombre</span>
-        <input type="text" placeholder="Nombre" ng-model="vm.ruta.nombre">
-      </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Tipo</span>
-        <input type="text" placeholder="Tipo" ng-model="vm.ruta.tipo">
-      </label>
+      <form name="rutaform2">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nro. Ruta</span>
+          <input type="text" placeholder="Nro Ruta"
+                 ng-model="vm.ruta.idruta"
+                 name="rutaid2"
+                 ng-minlength="2"
+                 ng-maxlength="10"
+                 ng-pattern="/^[0-9]+$/"
+                 required>
+          <div ng-messages="rutaform2.rutaid2.$error"
+               ng-show="rutaform2.rutaid2.$touched">
+            <div ng-messages-include="error-messages">
+            </div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="Nombre"
+                 ng-model="vm.ruta.nombre"
+                 name="rutanombre2"
+                 ng-minlength="5"
+                 ng-maxlength="20"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                 required>
+          <div ng-messages="rutaform2.rutanombre2.$error"
+               ng-show="rutaform2.rutanombre2.$touched">
+            <div ng-messages-include="error-messages">
+            </div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Tipo</span>
+          <input type="text" placeholder="Tipo"
+                 ng-model="vm.ruta.tipo"
+                 name="rutatipo2"
+                 ng-minlength="4"
+                 ng-maxlength="10"
+                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                 required>
+          <div ng-messages="rutaform2.rutatipo.$error"
+               ng-show="rutaform2.rutatipo.$touched">
+            <div ng-messages-include="error-messages">
+            </div>
+          </div>
+        </label>
+      </form>
+
     </div>
     <div class="padding">
       <button class="button button-block button-positive"
-              ng-click="vm.guardar(vm.ruta)">
+              ng-click="vm.guardar(vm.ruta)" ng-disabled="rutaform2.$invalid">
         Actualizar
       </button>
     </div>

@@ -64,8 +64,10 @@
     //crear custodio
     function registrarCustodio() {
       if (vm.list.$getRecord(vm.custodio.idempleado) != null) {
-        return console.log("Nro de empleado ya esta registrado")
+        return alert("Nro de empleado ya esta registrado")
       }
+      vm.custodio.enCamion = false;
+
       custodio.child(vm.custodio.idempleado).set(vm.custodio);
       vm.modal.hide();
     }

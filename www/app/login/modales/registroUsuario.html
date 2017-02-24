@@ -28,7 +28,7 @@
           <input type="text" placeholder="Nombre" ng-model="vm.admin.nombre"
                  required
                  ng-minlength="3"
-                 ng-maxlength="50"
+                 ng-maxlength="20"
                  ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  name="nombreForm">
           <div ng-messages="registroForm.nombreForm.$error" ng-show="registroForm.nombreForm.$touched">
@@ -41,7 +41,7 @@
           <input type="text" placeholder="Apellido" ng-model="vm.admin.apellido"
                  required
                  ng-minlength="3"
-                 ng-maxlength="50"
+                 ng-maxlength="20"
                  ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  name="apellidoForm">
           <div ng-messages="registroForm.apellidoForm.$error" ng-show="registroForm.apellidoForm.$touched">
@@ -53,7 +53,7 @@
           <input type="text" placeholder="Cargo" ng-change="vm.cambio()" ng-model="vm.admin.cargo"
                  required
                  ng-minlength="5"
-                 ng-maxlength="50"
+                 ng-maxlength="20"
                  ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  name="cargoForm">
           <div ng-messages="registroForm.cargoForm.$error" ng-show="registroForm.cargoForm.$touched">

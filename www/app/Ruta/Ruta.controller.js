@@ -66,7 +66,7 @@
     //crear ruta
     function registrarRuta() {
       if (vm.list.$getRecord(vm.ruta.idruta) != null) {
-        return console.log("Nro de ruta ya esta registrado")
+        return alert("Nro de ruta ya esta registrado")
       }
       ruta.child(vm.ruta.idruta).set(vm.ruta);
       vm.modal.hide();
