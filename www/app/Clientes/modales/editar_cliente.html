@@ -12,7 +12,7 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">ID Cliente</span>
           <input type="number" placeholder="ID Cliente"
-                 ng-model="vm.cliente.idcliente"
+                 ng-model="vm.cliente2.idcliente"
                  name="clientid2"
                  ng-minlength="1"
                  ng-maxlength="10"
@@ -33,7 +33,7 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Nombre</span>
           <input type="text" placeholder="Cantidad"
-                 ng-model="vm.cliente.nombre"
+                 ng-model="vm.cliente2.nombre"
                  name="clientname2"
                  ng-minlength="5"
                  ng-maxlength="20"
@@ -53,7 +53,7 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Dirección</span>
-          <input type="text" placeholder="Dirección" ng-model="vm.cliente.direccion"
+          <input type="text" placeholder="Dirección" ng-model="vm.cliente2.direccion"
                  name="clientdir2"
                  ng-minlength="5"
                  ng-maxlength="40"
@@ -74,7 +74,7 @@
           <div class="input-label">
             Ruta
           </div>
-          <select ng-options="ruta.$id as ruta.nombre for ruta in vm.rutas" ng-model="vm.cliente.ruta"
+          <select ng-options="ruta.$id as ruta.nombre for ruta in vm.rutas" ng-model="vm.cliente2.ruta"
                   name="clientruta2"
                   required>
           </select>

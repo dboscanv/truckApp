@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.truckapp526819" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Planificacion de Rutas</name>
-  <description>&#xD;&#xD;
-    Planificacion de rutas para la empresa de valores.&#xD;&#xD;
+  <description>&#xD;&#xD;&#xD;
+    Planificacion de rutas para la empresa de valores.&#xD;&#xD;&#xD;
   </description>
-  <author email="juansimon18.js@gmail.com" href="http://example.com/">&#xD;
-    Diego Boscan&#xD;
-    Juan S. Perez&#xD;
+  <author email="juansimon18.js@gmail.com" href="http://example.com/">&#xD;&#xD;
+    Diego Boscan&#xD;&#xD;
+    Juan S. Perez&#xD;&#xD;
   </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -44,4 +44,7 @@
     <splash src="resources\android\splash\drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
+  <plugin name="cordova-plugin-device" spec="~1.1.4"/>
+  <plugin name="cordova-plugin-statusbar" spec="~2.2.1"/>
+  <plugin name="cordova-plugin-splashscreen" spec="~4.0.1"/>
 </widget>

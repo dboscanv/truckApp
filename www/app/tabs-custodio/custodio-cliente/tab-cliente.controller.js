@@ -7,9 +7,9 @@
     .module('truckApp.CustodioFinal.Cliente')
     .controller('tab_cliente', clienteCtrl);
 
-  clienteCtrl.$inject = ['$firebaseArray', '$stateParams', '$ionicModal', '$scope', '$cordovaGeolocation', '$state', '$localStorage', '$timeout'];
+  clienteCtrl.$inject = ['$firebaseArray', '$stateParams', '$ionicModal', '$scope', '$cordovaGeolocation', '$state', '$localStorage', '$timeout', '$rootScope'];
 
-  function clienteCtrl($firebaseArray, $stateParams, $ionicModal, $scope, $cordovaGeolocation, $state, $localStorage, $timeout) {
+  function clienteCtrl($firebaseArray, $stateParams, $ionicModal, $scope, $cordovaGeolocation, $state, $localStorage, $timeout, $rootScope) {
     var vm = this;
     const cliente = firebase.ref("cliente");
     vm.detalleCliente = detalleCliente;
@@ -32,8 +32,6 @@
     }).then(function (modal) {
       vm.modal1 = modal;
     });
-
-
 
 
     function abrirModal(indice) {

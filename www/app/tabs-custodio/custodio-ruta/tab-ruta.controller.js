@@ -8,9 +8,9 @@
     .module('truckApp.CustodioFinal.Ruta')
     .controller('tab_ruta', rutaCtrl);
 
-  rutaCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$localStorage', '$timeout', '$state'];
+  rutaCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope', '$localStorage', '$timeout', '$state', '$rootScope'];
 
-  function rutaCtrl($firebaseAuth, $ionicModal, $scope, $localStorage, $timeout, $state) {
+  function rutaCtrl($firebaseAuth, $ionicModal, $scope, $localStorage, $timeout, $state, $rootScope) {
     var vm = this;
     vm.title = 'tab_ruta';
     vm.eliminarConfig = eliminarConfig;
@@ -37,6 +37,7 @@
     }
 
     function eliminarConfig() {
+      $rootScope.$broadcast('loading:show');
       auth.$signInWithEmailAndPassword(vm.email, vm.password).then(success).catch(error);
     }
 
@@ -52,10 +53,12 @@
     }
 
     function error() {
+      $rootScope.$broadcast('loading:hide');
       console.log(error)
     }
 
     function redirect() {
+      $rootScope.$broadcast('loading:hide');
       vm.modal.hide();
       $state.go('/principal')
     }

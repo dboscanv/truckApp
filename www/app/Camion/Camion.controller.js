@@ -3,9 +3,9 @@
   angular.module("truckApp.Camion")
     .controller("CamionCtrl", CamionCtrl);
 
-  CamionCtrl.$inject = ['checkAuth', "$firebaseArray", "$ionicModal", "$scope"];
+  CamionCtrl.$inject = ['checkAuth', "$firebaseArray", "$ionicModal", "$scope", '$rootScope'];
 
-  function CamionCtrl(checkAuth, $firebaseArray, $ionicModal, $scope) {
+  function CamionCtrl(checkAuth, $firebaseArray, $ionicModal, $scope, $rootScope) {
     var vm = this;
     vm.camion = {};
     const camion = firebase.database().ref("camion");
@@ -40,16 +40,32 @@
     });
 
     function Eliminar(camion) {
+      $rootScope.$broadcast('loading:show');
+
       vm.camiones.$remove(camion).then(function (ref) {
         console.log(ref);
         console.log(camion.$id == ref.key);
-      });
+      })
+        .then(successEliminar)
+        .catch(errEliminar)
     }
+
+    function successEliminar(succ) {
+      $rootScope.$broadcast('loading:hide');
+      alert("Operacion realizada con exito")
+    }
+
+    function errEliminar(e) {
+      $rootScope.$broadcast('loading:hide');
+      alert("Operacion realizada con exito")
+    }
+
 
     function AbrirModal(index, camion) {
 
       if (index == 1) {
         vm.modal1.show();
+
       } else {
         vm.modal2.show();
         vm.camion = camion;
@@ -58,39 +74,50 @@
 
     function CerrarModal(index) {
       if (index == 1) {
-        vm.camion = {};
-
+        vm.camion = "";
         vm.modal1.hide();
       } else {
         vm.modal2.hide();
-        vm.camion = {};
+        vm.camion = "";
 
       }
     }
 
     function GuardarCamion() {
+      $rootScope.$broadcast('loading:show');
       if (vm.camiones.$getRecord(vm.camion.id) != null) {
+        $rootScope.$broadcast('loading:hide');
         return alert("Nro de camion ya esta registrado")
       }
       if (vm.camion.cantidad > vm.camion.capacidad) {
-        return alert("La capacidad supera a la cantidad")
+        $rootScope.$broadcast('loading:hide');
+        return alert("La cantidad supera a la capacidad")
       } else {
-        camion.child(vm.camion.id).set(vm.camion).then(function (ref) {
-          console.log(ref);
-          console.log("Añadido!");
-          vm.modal1.hide();
-        });
+        camion.child(vm.camion.id).set(vm.camion)
+          .then(function (ref) {
+            console.log(ref);
+            console.log("Añadido!");
+            $rootScope.$broadcast('loading:hide');
+            vm.modal1.hide();
+          })
+          .catch(function (e) {
+            $rootScope.$broadcast('loading:hide');
+          })
       }
     }
 
     function Editar() {
+      $rootScope.$broadcast('loading:show');
       if (vm.camion.cantidad > vm.camion.capacidad) {
+        $rootScope.$broadcast('loading:hide');
         return alert("La capacidad supera a la cantidad")
       } else {
         vm.camiones.$save(vm.camion).then(function (ref) {
           alert("Actualizado!");
+          $rootScope.$broadcast('loading:hide');
           vm.modal2.hide();
         }, function (error) {
+          $rootScope.$broadcast('loading:hide');
           console.log(error);
         });
       }

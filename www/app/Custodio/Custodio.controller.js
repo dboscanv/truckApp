@@ -3,9 +3,9 @@
   angular.module("truckApp.Custodio")
     .controller("CustodioCtrl", CustodioCtrl);
 
-  CustodioCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', '$ionicListDelegate', 'checkAuth'];
+  CustodioCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', '$ionicListDelegate', 'checkAuth', '$rootScope'];
 
-  function CustodioCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, $ionicPopup, $ionicListDelegate, checkAuth) {
+  function CustodioCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, $ionicPopup, $ionicListDelegate, checkAuth, $rootScope) {
     var vm = this;
     vm.custodio = {};
 
@@ -63,21 +63,38 @@
 
     //crear custodio
     function registrarCustodio() {
+      $rootScope.$broadcast('loading:show');
+
       if (vm.list.$getRecord(vm.custodio.idempleado) != null) {
+        $rootScope.$broadcast('loading:hide');
+
         return alert("Nro de empleado ya esta registrado")
       }
       vm.custodio.enCamion = false;
 
-      custodio.child(vm.custodio.idempleado).set(vm.custodio);
+      custodio.child(vm.custodio.idempleado).set(vm.custodio)
+        .then(function (s) {
+          $rootScope.$broadcast('loading:hide');
+          alert("Custodio registrado con exito")
+        })
+        .catch(function (e) {
+          $rootScope.$broadcast('loading:hide');
+          alert("Error al registrar cliente")
+        })
       vm.modal.hide();
     }
 
     //eliminar custodio
     function eliminar(custodio) {
+      $rootScope.$broadcast('loading:show');
       console.log(custodio);
       vm.list.$remove(custodio).then(function (s) {
-        console.log(s)
-      });
+        $rootScope.$broadcast('loading:hide');
+        alert("Custodio eliminado con exito")
+      }), function (e) {
+        $rootScope.$broadcast('loading:hide');
+        alert("Error al eliminar custodio")
+      };
     }
 
     //editar custodio
@@ -87,16 +104,15 @@
     }
 
     function guardar(obj) {
+      $rootScope.$broadcast('loading:show');
+
       vm.list.$save(obj).then(function (success) {
         vm.modal2.remove();
-        var alertPopup = $ionicPopup.alert({
-          title: 'Info',
-          template: 'Custodio Actualizado con exito.'
-        });
-
-        alertPopup.then(function (res) {
-          $ionicListDelegate.$getByHandle("custodioHandle").closeOptionButtons();
-        });
+        alert("Custodio editado con exito")
+        $rootScope.$broadcast('loading:hide');
+      }, function (e) {
+        alert("Error al editar custodio")
+        $rootScope.$broadcast('loading:hide');
       })
     }
 

@@ -3,9 +3,9 @@
   angular.module("truckApp.Ruta")
     .controller("RutaCtrl", RutaCtrl);
 
-  RutaCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', 'checkAuth'];
+  RutaCtrl.$inject = ['$firebaseObject', '$scope', '$firebaseArray', '$ionicModal', '$ionicPopup', 'checkAuth', '$rootScope'];
 
-  function RutaCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, checkAuth) {
+  function RutaCtrl($firebaseObject, $scope, $firebaseArray, $ionicModal, checkAuth, $rootScope) {
     var vm = this;
     vm.ruta = {};
     const ruta = firebase.database().ref('ruta');
@@ -58,14 +58,20 @@
     function cerrarModal(a) {
       if (a === 1) {
         vm.modal.hide();
+        vm.ruta = {};
+
       } else {
         vm.modal2.hide();
+        vm.ruta = {};
+
       }
     }
 
     //crear ruta
     function registrarRuta() {
+      $rootScope.$broadcast('loading:show');
       if (vm.list.$getRecord(vm.ruta.idruta) != null) {
+        $rootScope.$broadcast('loading:hide');
         return alert("Nro de ruta ya esta registrado")
       }
       ruta.child(vm.ruta.idruta).set(vm.ruta);
@@ -74,8 +80,10 @@
 
     //eliminar ruta
     function eliminar(ruta) {
+      $rootScope.$broadcast('loading:show');
       vm.list.$remove(ruta).then(function (s) {
         console.log(s)
+        $rootScope.$broadcast('loading:hide');
       });
     }
 
@@ -85,16 +93,11 @@
     }
 
     function guardar(obj) {
+      $rootScope.$broadcast('loading:show');
       vm.list.$save(obj).then(function (success) {
         vm.modal2.hide();
-        var alertPopup = $ionicPopup.alert({
-          title: 'Info',
-          template: 'Custodio Actualizado con exito.'
-        });
-
-        alertPopup.then(function (res) {
-          $ionicListDelegate.$getByHandle("rutaHandle").closeOptionButtons();
-        });
+        alert("Ruta editada con exito");
+        $rootScope.$broadcast('loading:hide');
       })
     }
 

@@ -66,6 +66,7 @@
 
 
     function entrar() {
+      $rootScope.$broadcast('loading:show');
       auth.$signInWithEmailAndPassword(vm.email, vm.password).then(function (user) {
         var query = refAdmin.orderByChild('email').equalTo(vm.email);
         query.on('value', function (snap) {
@@ -74,9 +75,11 @@
         });
         $localStorage.usua = $firebaseArray(query);
         $state.go('tab.dash');
+        $rootScope.$broadcast('loading:hide');
       }).catch(function (err) {
         console.log(err);
         alert("Correo o clave invalida")
+        $rootScope.$broadcast('loading:hide');
       })
     }
 
@@ -107,6 +110,7 @@
       });
 
       myPopup.then(function (success) {
+        $rootScope.$broadcast('loading:show');
         auth.$signInWithEmailAndPassword(success.correo, success.clave).then(function () {
           auth.$createUserWithEmailAndPassword(vm.admin.email, vm.admin.password).catch(function (err) {
             console.log(JSON.stringify(err))
@@ -114,13 +118,18 @@
             refAdmin.child(vm.admin.idempleado).set(vm.admin);
             alert("Usuario registrado con exito!");
             vm.cerrarModal(1);
+            $rootScope.$broadcast('loading:hide');
+
           }).catch(function (e) {
             console.log(e);
             vm.cerrarModal(1);
+            $rootScope.$broadcast('loading:hide');
+
           });
         })
           .catch(function (e) {
             alert("Clave o usuario invalido");
+            $rootScope.$broadcast('loading:hide');
           });
       });
 
@@ -129,12 +138,17 @@
     }
 
     function recuperarClave() {
+      $rootScope.$broadcast('loading:show');
+
       auth.$sendPasswordResetEmail(vm.email).then(function () {
         alert("Correo enviado con exito");
         vm.modal2.hide();
+        $rootScope.$broadcast('loading:hide');
       }).catch(function (err) {
         vm.modal2.hide();
         alert("El correo ingresado no existe");
+        $rootScope.$broadcast('loading:hide');
+
       })
     }
 

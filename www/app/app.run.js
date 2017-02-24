@@ -6,9 +6,9 @@
     .module('truckApp')
     .run(loginRun);
 
-  loginRun.$inject = ['$rootScope', '$state', '$localStorage', "$http", "$templateCache", "$cordovaNetwork"];
+  loginRun.$inject = ['$rootScope', '$state', '$localStorage', "$http", "$templateCache", "$cordovaNetwork", "$ionicLoading"];
 
-  function loginRun($rootScope, $state, $localStorage, $http, $templateCache, $cordovaNetwork) {
+  function loginRun($rootScope, $state, $localStorage, $http, $templateCache, $cordovaNetwork, $ionicLoading) {
 
     $http.get("app/messages-comun.html").then(function (response) {
       $templateCache.put("error-messages", response.data);
@@ -34,5 +34,15 @@
         $state.go("/login");
       }
     });
+
+    $rootScope.$on('loading:show', loadingShow);
+    $rootScope.$on('loading:hide', loadingHide);
+    function loadingShow() {
+      $ionicLoading.show();
+    }
+
+    function loadingHide() {
+      $ionicLoading.hide();
+    }
   }
 })();
