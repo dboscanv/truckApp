@@ -89,11 +89,11 @@
         // doc.save("reportico.pdf");
         var descarga = doc.output('dataurlstring'); //Exportar el pdf con una URL
 
-        var targetPath = cordova.file.documentsDirectory;
+        var targetPath = cordova.file.externalRootDirectory;
         var trustHosts = true;
         var options = {};
 
-        $cordovaFileTransfer.download(url, targetPath + '/reporte ' + moment().format("DD-MM-YY-hh:mm:ss") + '.pdf', options, trustHosts)
+        $cordovaFileTransfer.download(descarga, targetPath + '/reporte ' + moment().format("DD-MM-YY-hh:mm:ss") + '.pdf', options, trustHosts)
           .then(function (result) {
             alert("Reporte exportado correctamente");
           }, function (err) {
