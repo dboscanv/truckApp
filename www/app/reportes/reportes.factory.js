@@ -86,19 +86,19 @@
 
         // //Descarga
 
-        doc.save("reportico.pdf");
-        // var descarga = doc.output('dataurlstring'); //Exportar el pdf con una URL
-        //
-        // var targetPath = cordova.file.documentsDirectory;
-        // var trustHosts = true;
-        // var options = {};
-        //
-        // $cordovaFileTransfer.download(url, targetPath + '/reporte ' + moment().format("DD-MM-YY-hh:mm:ss") + '.pdf', options, trustHosts)
-        //   .then(function (result) {
-        //     alert("Reporte exportado correctamente");
-        //   }, function (err) {
-        //     alert("Error exportando el reporte");
-        //   });
+        // doc.save("reportico.pdf");
+        var descarga = doc.output('dataurlstring'); //Exportar el pdf con una URL
+
+        var targetPath = cordova.file.documentsDirectory;
+        var trustHosts = true;
+        var options = {};
+
+        $cordovaFileTransfer.download(url, targetPath + '/reporte ' + moment().format("DD-MM-YY-hh:mm:ss") + '.pdf', options, trustHosts)
+          .then(function (result) {
+            alert("Reporte exportado correctamente");
+          }, function (err) {
+            alert("Error exportando el reporte");
+          });
       }
     }
 
