@@ -1,5 +1,24 @@
 <ion-view title="Reportes">
   <ion-content>
+    <div class="row">
+      <div class="col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Ruta
+          </div>
+          <select ng-options="ruta.idruta as ruta.nombre for ruta in vm.rutas"
+                  name="rutaForm" required
+                  ng-model="vm.idruta">
+          </select>
+        </label>
+      </div>
+      <div class="col">
+        <input type="date" ng-model="vm.date">
+      </div>
+    </div>
+    <button class="button button-positive" ng-click="vm.submit()">
+      Consultar
+    </button>
     <ion-list>
       <ion-item ng-repeat="reco in vm.recorridos">
         <ul>

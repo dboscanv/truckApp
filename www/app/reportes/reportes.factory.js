@@ -7,7 +7,7 @@
 
   function reportesFactory($cordovaFileTransfer) {
     return {
-      generarPDF: function (columnas, datos, idruta, fecha_ini, fecha_final, custodios) {
+      generarPDF: function (columnas, datos, idruta, fecha_ini, custodios) {
         var doc = new jsPDF('p', 'pt');
         var fecha = moment().format("DD/MM/YYYY hh:mm:ss A");
 
@@ -47,14 +47,18 @@
             doc.setFontSize(12);
             doc.text(40, 75, 'RUTA # ' + idruta);
             doc.text(40, 90, "Fecha inicial: " + fecha_ini);
-            doc.text(40, 105, "Fecha final: " + fecha_final);
+            // doc.text(40, 105, "Fecha final: " + fecha_final);
             doc.setTextColor(0, 0, 0);
             //Listado de custodios
             doc.text(420, 60, "CUSTODIOS:");
+            var dist = 78;
             for (var x = 0; x < custodios.length; x++) {
-              var dist = 60;
-              dist += 22;
-              doc.text(420, dist, custodios[x]);
+              if (x == 0) {
+                doc.text(420, dist, custodios[x]);
+              } else {
+                dist += 18;
+                doc.text(420, dist, custodios[x]);
+              }
             }
 
             //doc.text(40, 120, );
@@ -81,18 +85,20 @@
         }
 
         // //Descarga
-        var url = doc.output('datauristring'); //Exportar el pdf con una URL
 
-        var targetPath = cordova.file.documentsDirectory + "reporte.pdf";
-        var trustHosts = true;
-        var options = {};
-
-        $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
-          .then(function (result) {
-            alert("Reporte exportado correctamente");
-          }, function (err) {
-            alert("Error exportando el reporte");
-          });
+        doc.save("reportico.pdf");
+        // var descarga = doc.output('dataurlstring'); //Exportar el pdf con una URL
+        //
+        // var targetPath = cordova.file.documentsDirectory;
+        // var trustHosts = true;
+        // var options = {};
+        //
+        // $cordovaFileTransfer.download(url, targetPath + '/reporte ' + moment().format("DD-MM-YY-hh:mm:ss") + '.pdf', options, trustHosts)
+        //   .then(function (result) {
+        //     alert("Reporte exportado correctamente");
+        //   }, function (err) {
+        //     alert("Error exportando el reporte");
+        //   });
       }
     }
 
