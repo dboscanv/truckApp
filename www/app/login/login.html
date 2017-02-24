@@ -1,64 +1,60 @@
 <ion-view title="Principal">
 
-  <ion-content style="background-color: gainsboro">
+    <ion-content style="background-color: gainsboro">
 
-    <div class="bar bar-header bar-dark">
-      <h1 class="title">Planificacion de Rutas</h1>
-      <!--<button class="button icon ion-person-add" ng-click="vm.abrirModal(1)"></button>-->
-    </div>
-    <form name="loginForm">
-      <div style="padding-top: 14%;">
-        <div class="list">
-          <label class="item item-input item-floating-label"
-                 required>
-            <span class="input-label">Correo</span>
-            <input type="email" placeholder="Correo"
-                   ng-model="vm.email"
-                   name="mail"
-                   required
-            >
-            <div ng-messages="loginForm.mail.$error"
-                 ng-show="loginForm.mail.$touched">
-              <div ng-messages-include="error-messages">
-                <p ng-message="required">Campo requerido</p>
-                <!--<p ng-message="maxlength">Máximo 6 caracteres</p>-->
-                <!--<p ng-message="minlength">Minimo 3 caracteres</p>-->
-              </div>
-            </div>
-          </label>
-
-          <label class="item item-input item-floating-label"
-                 required>
-            <span class="input-label">Clave</span>
-            <input type="password" placeholder="Clave"
-                   ng-model="vm.password"
-                   name="pass"
-                   ng-minlength="4"
-                   ng-maxlength="10"
-                   required>
-
-            <div ng-messages="loginForm.pass.$error"
-                 ng-show="loginForm.pass.$touched">
-              <div ng-messages-include="error-messages">
-                <p ng-message="required">Campo requerido</p>
-                <p ng-message="maxlength">Máximo 10 caracteres</p>
-                <p ng-message="minlength">Minimo 4 caracteres</p>
-              </div>
-            </div>
-          </label>
+        <div class="bar bar-header bar-dark">
+            <h1 class="title">Planificacion de Rutas</h1>
+            <button class="button icon ion-person-add" ng-click="vm.abrirModal(1)"></button>
         </div>
-        <div class="padding">
-          <button class="button button-block button-dark" ng-click="vm.entrar()"
-                  ng-disabled="loginForm.$invalid">
-            Iniciar Sesión
-          </button>
-        </div>
-        <a href="" ng-click="vm.abrirModal(2)">
-          <small style="margin-left: 34%;">Recuperar contraseña</small>
-        </a>
-        <!--<button class="button icon ion-compose" ng-click="vm.abrirModal(2)">asdasd</button>-->
+        <form name="loginForm">
+            <div style="padding-top: 14%;">
+                <div class="list">
+                    <label class="item item-input item-floating-label"
+                           required>
+                        <span class="input-label">Correo</span>
+                        <input type="email" placeholder="Correo"
+                               ng-model="vm.email"
+                               name="mail"
+                               required>
+                        <div ng-messages="loginForm.mail.$error"
+                             ng-show="loginForm.mail.$touched">
+                            <div ng-messages-include="error-messages">
+                            </div>
+                        </div>
+                    </label>
 
-      </div>
-    </form>
-  </ion-content>
+                    <label class="item item-input item-floating-label"
+                           required>
+                        <span class="input-label">Clave</span>
+                        <input type="password" placeholder="Clave"
+                               ng-model="vm.password"
+                               name="pass"
+                               ng-minlength="4"
+                               ng-maxlength="10"
+                               required>
+
+                        <div ng-messages="loginForm.pass.$error"
+                             ng-show="loginForm.pass.$touched">
+                            <div ng-messages-include="error-messages">
+                                <p ng-message="required">Campo requerido</p>
+                                <p ng-message="maxlength">Máximo 10 caracteres</p>
+                                <p ng-message="minlength">Minimo 4 caracteres</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="padding">
+                    <button class="button button-block button-dark" ng-click="vm.entrar()"
+                            ng-disabled="loginForm.$invalid">
+                        Iniciar Sesión
+                    </button>
+                </div>
+                <a href="" ng-click="vm.abrirModal(2)">
+                    <small style="margin-left: 34%;">Recuperar contraseña</small>
+                </a>
+                <!--<button class="button icon ion-compose" ng-click="vm.abrirModal(2)">asdasd</button>-->
+
+            </div>
+        </form>
+    </ion-content>
 </ion-view>
