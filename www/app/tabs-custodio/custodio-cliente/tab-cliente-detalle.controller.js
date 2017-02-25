@@ -7,10 +7,10 @@
     .module('truckApp.CustodioFinal.Cliente')
     .controller('detalle_cliente', detalle_cliente);
 
-  detalle_cliente.$inject = ['$stateParams', '$firebaseArray', '$cordovaGeolocation', '$localStorage', '$timeout', '$ionicModal', '$scope', '$state'];
+  detalle_cliente.$inject = ['$stateParams', '$firebaseArray', '$cordovaGeolocation', '$localStorage', '$timeout', '$ionicModal', '$scope', '$state', '$rootScope'];
 
   /* @ngInject */
-  function detalle_cliente($stateParams, $firebaseArray, $cordovaGeolocation, $localStorage, $timeout, $ionicModal, $scope, $state) {
+  function detalle_cliente($stateParams, $firebaseArray, $cordovaGeolocation, $localStorage, $timeout, $ionicModal, $scope, $state, $rootScope) {
     var vm = this;
     vm.title = 'detalle_cliente';
     vm.mapa = true;
@@ -50,7 +50,7 @@
     // console.log(vm.cliente);
 
     function terminarVisita(cliente) {
-
+      $rootScope.$broadcast('loading:show');
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
@@ -68,20 +68,28 @@
           direccion: cliente.direccion,
           fecha_visita: moment().format("DD-MM-YYYY HH:mm A"),
           idrecorrido: $localStorage.config.recorrido
-        }).then(actualizarCliente);
+        }).then(actualizarCliente)
+          .catch(errorAct)
 
         function actualizarCliente() {
-
-          firebase.ref("cliente").child(cliente.idcliente).update({
+          alert("Visita finalizada con exito");
+          cliente.child(cliente.idcliente).update({
             visitado: true,
             latitud: position.coords.latitude,
             longitud: position.coords.longitude
           });
+          $rootScope.$broadcast('loading:hide');
+        }
+
+        function errorAct(e) {
+          $rootScope.$broadcast('loading:hide');
         }
       }
 
       function error(err) {
+        console.log(err)
         alert("No se pudo encontrar la ubicacion, active el gps");
+        $rootScope.$broadcast('loading:hide');
       }
 
       $timeout(function () {

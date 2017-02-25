@@ -2,16 +2,15 @@
  * Created by nomisnaujpc on 04/01/2017.
  */
 (function () {
-    'use strict';
 
     angular.module('truckApp.Login')
             .controller('LoginCtrl', LoginCtrl);
 
     LoginCtrl.$inject = ['$firebaseAuth', '$ionicModal', '$scope',
-        '$firebaseArray', '$state', '$rootScope', '$localStorage', '$ionicPopup'];
+        '$firebaseArray', '$state', '$rootScope', '$localStorage', '$ionicPopup', '$timeout'];
 
     function LoginCtrl($firebaseAuth, $ionicModal, $scope, $firebaseArray, $state,
-            $rootScope, $localStorage, $ionicPopup) {
+            $rootScope, $localStorage, $ionicPopup, $timeout) {
         var vm = this;
         var auth = $firebaseAuth();
         var refAdmin = firebase.database().ref('administrador');
@@ -21,7 +20,6 @@
         vm.cerrarModal = cerrarModal;
         vm.registrar = registrar;
         vm.recuperarClave = recuperarClave;
-        $rootScope.cerrarSesion = cerrarSesion;
 
         $ionicModal.fromTemplateUrl('app/login/modales/registroUsuario.html', function ($ionicModal) {
             id:1,
@@ -67,6 +65,7 @@
 
 
         function entrar() {
+            $rootScope.$broadcast('loading:show');
             auth.$signInWithEmailAndPassword(vm.email, vm.password).then(function (user) {
                 var query = refAdmin.orderByChild('email').equalTo(vm.email);
                 query.on('value', function (snap) {
@@ -74,10 +73,14 @@
                     console.log(snap);
                 });
                 $localStorage.usua = $firebaseArray(query);
-                $state.go('tab.dash');
+                $timeout(function () {
+                    $state.go('tab.dash');
+                }, 2000)
+                $rootScope.$broadcast('loading:hide');
             }).catch(function (err) {
                 console.log(err);
                 alert("Correo o clave invalida")
+                $rootScope.$broadcast('loading:hide');
             })
         }
 
@@ -108,6 +111,7 @@
             });
 
             myPopup.then(function (success) {
+                $rootScope.$broadcast('loading:show');
                 auth.$signInWithEmailAndPassword(success.correo, success.clave).then(function () {
                     auth.$createUserWithEmailAndPassword(vm.admin.email, vm.admin.password).catch(function (err) {
                         console.log(JSON.stringify(err))
@@ -115,34 +119,40 @@
                         refAdmin.child(vm.admin.idempleado).set(vm.admin);
                         alert("Usuario registrado con exito!");
                         vm.cerrarModal(1);
+                        $rootScope.$broadcast('loading:hide');
+
                     }).catch(function (e) {
                         console.log(e);
                         vm.cerrarModal(1);
+                        $rootScope.$broadcast('loading:hide');
+
                     });
                 })
                         .catch(function (e) {
                             alert("Clave o usuario invalido");
+                            $rootScope.$broadcast('loading:hide');
                         });
             });
 
-//         
+//
 
         }
 
         function recuperarClave() {
+            $rootScope.$broadcast('loading:show');
+
             auth.$sendPasswordResetEmail(vm.email).then(function () {
                 alert("Correo enviado con exito");
                 vm.modal2.hide();
+                $rootScope.$broadcast('loading:hide');
             }).catch(function (err) {
                 vm.modal2.hide();
                 alert("El correo ingresado no existe");
+                $rootScope.$broadcast('loading:hide');
+
             })
         }
 
-        function cerrarSesion() {
-            auth.$signOut();
-            delete $localStorage.usua;
-            $state.go('/principal');
-        }
+
     }
 })();
