@@ -8,6 +8,10 @@
   function reportesFactory($cordovaFileTransfer) {
     return {
       generarPDF: function (columnas, datos, idruta, fecha_ini, custodios) {
+        if (datos.length <= 0) {
+          alert("No existen recorridos en esa ruta para esa fecha");
+          return;
+        }
         var doc = new jsPDF('p', 'pt');
         var fecha = moment().format("DD/MM/YYYY hh:mm:ss A");
 
@@ -86,7 +90,7 @@
 
         // //Descarga
 
-        // doc.save("reportico.pdf");
+        doc.save("reportico.pdf");
         var descarga = doc.output('dataurlstring'); //Exportar el pdf con una URL
 
         var targetPath = cordova.file.documentsDirectory;

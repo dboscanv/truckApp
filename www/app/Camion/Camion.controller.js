@@ -78,6 +78,7 @@
         camion.child(vm.camion.id).set(vm.camion).then(function (ref) {
           console.log(ref);
           console.log("Añadido!");
+          vm.camion = {};
           vm.modal1.hide();
         });
       }
@@ -89,6 +90,7 @@
       } else {
         vm.camiones.$save(vm.camion).then(function (ref) {
           alert("Actualizado!");
+          vm.camion = {};
           vm.modal2.hide();
         }, function (error) {
           console.log(error);

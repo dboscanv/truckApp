@@ -46,6 +46,9 @@
           .update({enCamion: false})
       });
 
+      firebase.ref("recorridos/" + $localStorage.config.recorrido)
+        .update({estado: 0});
+
       delete $localStorage.config;
       auth.$signOut();
       $timeout(redirect, 1500);

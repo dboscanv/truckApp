@@ -10,6 +10,7 @@
     vm.obtener_pdf = obtener_pdf;
     vm.submit = submit;
 
+    vm.today = new Date();
     const recorridos = firebase.database().ref("recorridos");
     var recorridos_list = [];
 
@@ -73,6 +74,7 @@
       var visitas_list = [];
       var custodios_list = [];
       var custodios_nombres = [];
+
       asyncLoop(vm.recorridos.length, function (loop) {
         var reco = vm.recorridos[loop.iteration()];
         firebase.database().ref("visita").orderByChild("idrecorrido").equalTo(reco.id).on("value", function (x) {
@@ -85,11 +87,9 @@
             custodios_list = x.val();
 
             // 2. Obtener los nombres de custodios
-            console.log(reco);
+
             for (var cust in reco.custodios) {
               for (var custo in custodios_list) {
-                console.log(cust);
-                console.log(custodios_list[custo].idempleado);
                 if (cust == parseInt(custodios_list[custo].idempleado)) {
                   custodios_nombres.push(custodios_list[custo].nombre + " " + custodios_list[custo].apellido);
                 }
@@ -105,6 +105,22 @@
         console.log(visitas_list);
         console.log(custodios_nombres);
 
+        //Quitar duplicados a custodios_nombres
+        var obj = {};
+        var custodios_nombres_clear = [];
+        for (var x = 0; x < custodios_nombres.length; x++) {
+          obj[custodios_nombres[x]] = 0;
+        }
+
+        for (var nomb in obj) {
+          custodios_nombres_clear.push(nomb);
+        }
+
+        //Formatear los numeros para que aparezcan con separador de miles
+        for (var x = 0; x < visitas_list.length; x++) {
+          visitas_list[x].cantidad = visitas_list[x].cantidad.toLocaleString() + " Bs.";
+        }
+
         var columns = [
           {title: "Cliente", dataKey: "nombre"},
           {title: "Direccion", dataKey: "direccion"},
@@ -112,8 +128,7 @@
           {title: "Monto", dataKey: "cantidad"},
           {title: "Observacion", dataKey: "observacion"}
         ];
-
-        reportesFactory.generarPDF(columns, visitas_list, vm.idruta, moment(vm.date).format("DD-MM-YYYY"), custodios_nombres); //TODO pasar fecha inicial, final, y el listado de custodios
+        reportesFactory.generarPDF(columns, visitas_list, vm.idruta, moment(vm.date).format("DD-MM-YYYY"), custodios_nombres_clear); //TODO pasar fecha inicial, final, y el listado de custodios
       });
 
       // for (var x = 0; x < vm.recorridos.length; x++) {

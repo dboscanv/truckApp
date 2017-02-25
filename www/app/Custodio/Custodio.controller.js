@@ -56,8 +56,10 @@
     function cerrarModal(a) {
       if (a === 1) {
         vm.modal.hide();
+        vm.custodio = {};
       } else {
-        vm.modal2.hide()
+        vm.modal2.hide();
+        vm.custodio = {};
       }
     }
 
@@ -69,6 +71,7 @@
       vm.custodio.enCamion = false;
 
       custodio.child(vm.custodio.idempleado).set(vm.custodio);
+      vm.custodio = {};
       vm.modal.hide();
     }
 

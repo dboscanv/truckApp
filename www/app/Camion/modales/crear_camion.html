@@ -10,7 +10,7 @@
       <div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label">Nro. Camión</span>
-          <input type="text" placeholder="Nro. Camión"
+          <input type="number" placeholder="Nro. Camión"
                  ng-model="vm.camion.id"
                  ng-minlength="3"
                  ng-maxlength="6"
@@ -36,8 +36,7 @@
                  ng-minlength="1"
                  ng-maxlength="10"
                  ng-pattern="/^[0-9]+$/"
-                 required
-          >
+                 required>
           <div ng-messages="truck.truckCantidad.$error"
                ng-show="truck.truckCantidad.$touched">
             <div ng-messages-include="error-messages">

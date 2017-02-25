@@ -22,6 +22,8 @@
     const recorridos = firebase.ref("recorridos");
     var arrCust;
     vm.custodios_selec = [];
+    console.log("Inicio, custodios _selec vacio");
+    console.log(vm.custodios_selec);
 
     //referencia a la coleccion custodio
     const custodio = firebase.ref('custodio');
@@ -58,7 +60,7 @@
       var objCamion = {};
       var objCust = {};
 
-
+      console.log(vm.custodios_selec);
       angular.forEach(vm.custodios_selec, iterarCustodios);
 
       function iterarCustodios(obj) {
@@ -77,7 +79,6 @@
       objCamion[vm.camion_selec.$id] = true;
 
       // 3. Crear recorrido
-
       var rec = recorridos.push({
         ruta: vm.idruta,
         fecha_ini: moment().format("DD-MM-YYYY"),
@@ -85,6 +86,8 @@
         camiones: objCamion,
         estado: 1 //0: inactivo, 1 activo
       });
+      console.log("Creo el recorrido");
+
 
       $localStorage.config = {
         config: true,
@@ -99,6 +102,7 @@
       // recorridos.child("-KbfXWkIoSJHuNCl4lyK").child("custodios").child("123").set(true);
 
       $state.go('tab_cliente', {idRuta: vm.idruta});
+
     }
 
   }

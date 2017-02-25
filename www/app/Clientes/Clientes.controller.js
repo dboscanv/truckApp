@@ -71,6 +71,7 @@
         return alert("Nro de cliente ya esta registrado")
       }
       cliente.child(vm.cliente.idcliente).set(vm.cliente).then(function (ref) {
+        vm.cliente = {};
         vm.modal1.hide();
       });
     }
@@ -79,6 +80,7 @@
       vm.clientes.$save(vm.cliente).then(function (ref) {
         alert("Actualizado!");
         $ionicListDelegate.$getByHandle("clienteHandle").closeOptionButtons();
+        vm.cliente = {};
         vm.modal2.hide();
       }, function (error) {
         console.log(error);

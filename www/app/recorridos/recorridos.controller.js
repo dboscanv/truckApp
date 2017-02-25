@@ -34,8 +34,9 @@
     });
 
     function get_nombre(id) {
+
       for (var obj in custodios_list) {
-        if (id == parseInt(custodios_list[obj].idempleado)) {
+        if (parseInt(id) == parseInt(custodios_list[obj].idempleado)) {
           return custodios_list[obj].nombre + " " + custodios_list[obj].apellido;
         }
       }

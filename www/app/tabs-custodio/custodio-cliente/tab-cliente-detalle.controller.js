@@ -72,7 +72,7 @@
 
         function actualizarCliente() {
 
-          cliente.child(cliente.idcliente).update({
+          firebase.ref("cliente").child(cliente.idcliente).update({
             visitado: true,
             latitud: position.coords.latitude,
             longitud: position.coords.longitude
@@ -81,7 +81,7 @@
       }
 
       function error(err) {
-        console.log(err)
+        alert("No se pudo encontrar la ubicacion, active el gps");
       }
 
       $timeout(function () {

@@ -31,7 +31,7 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Nombre</span>
-          <input type="text" placeholder="Cantidad"
+          <input type="text" placeholder="Nombre"
                  ng-model="vm.cliente.nombre"
                  name="clientname"
                  ng-minlength="5"
@@ -72,7 +72,7 @@
           <div class="input-label">
             Ruta
           </div>
-          <select ng-options="ruta.nombre as ruta.$id for ruta in vm.rutas"
+          <select ng-options="ruta.$id as ruta.nombre for ruta in vm.rutas"
                   ng-model="vm.cliente.ruta"
                   name="clientruta"
                   required>

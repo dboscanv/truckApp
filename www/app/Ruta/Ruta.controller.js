@@ -69,6 +69,7 @@
         return alert("Nro de ruta ya esta registrado")
       }
       ruta.child(vm.ruta.idruta).set(vm.ruta);
+      vm.ruta = {};
       vm.modal.hide();
     }
 
