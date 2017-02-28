@@ -18,6 +18,7 @@
     vm.terminarVisita = terminarVisita;
     vm.abrirModal = abrirModal;
     vm.cerrarModal = cerrarModal;
+    var aux;
 
     const visita = firebase.ref('visita');
     const cliente = firebase.ref("cliente");
@@ -49,54 +50,57 @@
     // vm.cliente = $firebaseArray(q);
     // console.log(vm.cliente);
 
-    function terminarVisita(cliente) {
+    function terminarVisita(cli) {
+      aux = cli;
       $rootScope.$broadcast('loading:show');
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
-        .then(success, error);
+        .then(success)
+        .catch(error);
+    }
 
-      function success(position) {
-        console.log(position);
+    function success(position) {
+      console.log(position);
 
-        visita.push({
-          cantidad: vm.cantidad,
-          observacion: vm.observacion,
-          tipo: vm.tipo,
-          cliente: cliente.idcliente,
-          nombre: cliente.nombre,
-          direccion: cliente.direccion,
-          fecha_visita: moment().format("DD-MM-YYYY HH:mm A"),
-          idrecorrido: $localStorage.config.recorrido
-        }).then(actualizarCliente)
-          .catch(errorAct)
+      visita.push({
+        cantidad: vm.cantidad,
+        observacion: vm.observacion,
+        tipo: vm.tipo,
+        cliente: aux.idcliente,
+        nombre: aux.nombre,
+        direccion: aux.direccion,
+        fecha_visita: moment().format("DD-MM-YYYY HH:mm A"),
+        idrecorrido: $localStorage.config.recorrido
+      }).then(actualizarCliente)
+        .catch(errorAct)
+    }
 
-        function actualizarCliente() {
-          alert("Visita finalizada con exito");
-          cliente.child(cliente.idcliente).update({
-            visitado: true,
-            latitud: position.coords.latitude,
-            longitud: position.coords.longitude
-          });
-          $rootScope.$broadcast('loading:hide');
-        }
 
-        function errorAct(e) {
-          $rootScope.$broadcast('loading:hide');
-        }
-      }
+    function actualizarCliente() {
+      alert("Visita finalizada con exito");
+      cliente.child(aux.idcliente).update({
+        // visitado: true,
+        latitud: position.coords.latitude,
+        longitud: position.coords.longitude
+      });
+      $timeout(time, 2000);
+      $rootScope.$broadcast('loading:hide');
+    }
 
-      function error(err) {
-        console.log(err)
-        alert("No se pudo encontrar la ubicacion, active el gps");
-        $rootScope.$broadcast('loading:hide');
-      }
+    function errorAct(e) {
+      $rootScope.$broadcast('loading:hide');
+    }
 
-      $timeout(function () {
-        var config = $localStorage.config;
-        $state.go('tab_cliente', {idRuta: config.idRuta});
-        vm.modal2.hide();
-      }, 2000)
+    function error(err) {
+      alert("No se pudo encontrar la ubicacion, active el gps");
+      $rootScope.$broadcast('loading:hide');
+    }
+
+    function time() {
+      var config = $localStorage.config;
+      $state.go('tab_cliente', {idRuta: config.idRuta});
+      vm.modal2.hide();
     }
   }
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.truckapp526819" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.truckapp526819" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Planificacion de Rutas</name>
   <description>&#xD;&#xD;&#xD;
     Planificacion de rutas para la empresa de valores.&#xD;&#xD;&#xD;
   </description>
-  <author email="juansimon18.js@gmail.com" href="http://example.com/">&#xD;&#xD;
+  <author email="juansimon18.js@gmail.com" href="http://eldelasfranelas.github.io/">&#xD;&#xD;
     Diego Boscan&#xD;&#xD;
     Juan S. Perez&#xD;&#xD;
   </author>

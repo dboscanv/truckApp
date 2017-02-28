@@ -11,11 +11,12 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Nro. Ruta</span>
           <input type="text" placeholder="Nro Ruta"
-                 ng-model="vm.ruta.idruta"
+                 ng-model="vm.ruta2.idruta"
                  name="rutaid2"
                  ng-minlength="2"
                  ng-maxlength="10"
                  ng-pattern="/^[0-9]+$/"
+                 disabled
                  required>
           <div ng-messages="rutaform2.rutaid2.$error"
                ng-show="rutaform2.rutaid2.$touched">
@@ -26,11 +27,11 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Nombre</span>
           <input type="text" placeholder="Nombre"
-                 ng-model="vm.ruta.nombre"
+                 ng-model="vm.ruta2.nombre"
                  name="rutanombre2"
                  ng-minlength="5"
                  ng-maxlength="20"
-                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                 ng-pattern="/^([A-Za-z0-9ÑñáéíóúÁÉÍÓÚ ]+)$/"
                  required>
           <div ng-messages="rutaform2.rutanombre2.$error"
                ng-show="rutaform2.rutanombre2.$touched">
@@ -38,15 +39,21 @@
             </div>
           </div>
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Tipo</span>
-          <input type="text" placeholder="Tipo"
-                 ng-model="vm.ruta.tipo"
-                 name="rutatipo2"
-                 ng-minlength="4"
-                 ng-maxlength="10"
-                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
-                 required>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tipo
+          </div>
+          <select ng-options="x.tipo as x.tipo for x in vm.tiporuta"
+                  ng-model="vm.ruta2.tipo" required name="rutatipo">
+
+          </select>
+          <!--<input type="text" placeholder="Tipo"-->
+          <!--ng-model="vm.ruta.tipo"-->
+          <!--name="rutatipo2"-->
+          <!--ng-minlength="4"-->
+          <!--ng-maxlength="10"-->
+          <!--ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"-->
+          <!--required>-->
           <div ng-messages="rutaform2.rutatipo.$error"
                ng-show="rutaform2.rutatipo.$touched">
             <div ng-messages-include="error-messages">

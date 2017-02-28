@@ -61,12 +61,13 @@
       alert("Operacion realizada con exito")
     }
 
-    function AbrirModal(index, cliente) {
+    function AbrirModal(index, cli) {
       if (index == 1) {
         vm.modal1.show();
       } else {
         vm.modal2.show();
-        vm.cliente2 = cliente;
+        var q = cliente.child(cli.idcliente);
+        vm.cliente2 = $firebaseObject(q);
       }
     }
 
@@ -75,8 +76,8 @@
         vm.modal1.hide();
       } else {
         vm.modal2.hide();
+        $ionicListDelegate.closeOptionButtons();
       }
-      vm.cliente = {};
     }
 
     function GuardarCliente() {
@@ -87,6 +88,8 @@
         $rootScope.$broadcast('loading:hide');
         return alert("Nro de cliente ya esta registrado")
       }
+      vm.cliente.latitud = '';
+      vm.cliente.longitud = '';
       cliente.child(vm.cliente.idcliente).set(vm.cliente).then(function (ref) {
         vm.cliente = {};
         vm.modal1.hide();
@@ -98,18 +101,27 @@
 
     function Editar() {
       $rootScope.$broadcast('loading:show');
+      cliente
+        .child(vm.cliente2.idcliente)
+        .update({
+          nombre: vm.cliente2.nombre,
+          direccion: vm.cliente2.direccion,
+          ruta: vm.cliente2.ruta
+        })
+        .then(updated)
+        .catch(errUp);
+    }
 
-      vm.clientes.$save(vm.cliente2).then(function (ref) {
-        alert("Cliente actualizado con exito!");
-        $rootScope.$broadcast('loading:hide');
-        $ionicListDelegate.$getByHandle("clienteHandle").closeOptionButtons();
-        vm.cliente = {};
-        vm.modal2.hide();
-      }, function (error) {
-        $rootScope.$broadcast('loading:hide');
+    function updated(s) {
+      $ionicListDelegate.closeOptionButtons();
+      alert("Cliente actualizado con exito!");
+      $rootScope.$broadcast('loading:hide');
+      vm.modal2.hide();
+    }
 
-        console.log(error);
-      });
+    function errUp(e) {
+      $rootScope.$broadcast('loading:hide');
+      console.log(e);
     }
 
 

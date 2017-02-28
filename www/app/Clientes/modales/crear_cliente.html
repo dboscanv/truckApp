@@ -21,10 +21,6 @@
           <div ng-messages="client.clientid.$error"
                ng-show="client.clientid.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo se permiten números</p>
-              <p ng-message="maxlength">Máximo 6 caracteres</p>
-              <p ng-message="minlength">Minimo 3 caracteres</p>
-              <p ng-message="required">Campo requerido</p>
 
             </div>
           </div>
@@ -35,17 +31,12 @@
                  ng-model="vm.cliente.nombre"
                  name="clientname"
                  ng-minlength="5"
-                 ng-maxlength="20"
+                 ng-maxlength="40"
                  ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
                  required>
           <div ng-messages="client.clientname.$error"
                ng-show="client.clientname.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo letras</p>
-              <p ng-message="maxlength">Máximo 20 caracteres</p>
-              <p ng-message="minlength">Minimo 5 caracteres</p>
-              <p ng-message="required">Campo requerido</p>
-
             </div>
           </div>
         </label>
@@ -61,10 +52,6 @@
           <div ng-messages="client.clientdir.$error"
                ng-show="client.clientdir.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo letras</p>
-              <p ng-message="required">Campo requerido</p>
-              <p ng-message="maxlength">Máximo 40 caracteres</p>
-              <p ng-message="minlength">Minimo 5 caracteres</p>
             </div>
           </div>
         </label>

@@ -90,7 +90,7 @@
 
         // //Descarga
 
-        doc.save("reportico.pdf");
+        doc.save("reporte.pdf");
         var descarga = doc.output('dataurlstring'); //Exportar el pdf con una URL
 
         var targetPath = cordova.file.externalRootDirectory;

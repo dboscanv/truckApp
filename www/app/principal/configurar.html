@@ -5,13 +5,18 @@
       <div class="padding">
 
         <div class="list">
-          <label class="item item-input item-select" ng-class="{'has-error':formConfig.camionForm.$invalid}">
+          <label class="item item-input item-select">
             <div class="input-label">
               Camion
             </div>
             <select ng-options="camion as camion.id for camion in vm.camion"
                     name="camionForm" required
                     ng-model="vm.camion_selec"></select>
+            <div ng-messages="formConfig.camionForm.$error"
+                 ng-show="formConfig.camionForm.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
           </label>
           <!--<div ng-messages="formConfig.camionForm.$error">-->
           <!--<div ng-message="required" style="color:red">-->
@@ -19,7 +24,7 @@
           <!--</div>-->
           <!--</div>-->
 
-          <label class="item item-input item-select" ng-class="{'has-error':formConfig.rutaForm.$invalid}">
+          <label class="item item-input item-select">
             <div class="input-label">
               Ruta
             </div>
@@ -27,6 +32,11 @@
                     name="rutaForm" required
                     ng-model="vm.idruta">
             </select>
+            <div ng-messages="formConfig.rutaForm.$error"
+                 ng-show="formConfig.rutaForm.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
           </label>
           <!--<div ng-messages="formConfig.rutaForm.$error">-->
           <!--<div ng-message="required" style="color:red">-->
@@ -46,7 +56,7 @@
         <!--<a href="#/tab-custodio/tab-cliente" class="button button-dark">Guardar-->
         <a class="button button-dark" ng-click="vm.configurar(vm.custodio)"
            ng-disabled="formConfig.$invalid || vm.custodios_selec.length == 0">
-          Guardar configuración</a>
+          Guardar</a>
       </div>
     </form>
   </ion-content>

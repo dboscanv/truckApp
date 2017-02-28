@@ -1,46 +1,46 @@
 <ion-view title="Perfil de usuario">
 
-    <ion-content style="background-color: gainsboro">
+  <ion-content style="background-color: gainsboro">
 
-        <div class="bar bar-header bar-dark" style="margin-top: -45px;">
-            <!--<h1 class="title">Informacion</h1>-->
-            <button class="button icon ion-compose" ng-click="vm.abrirModal(1)"></button>
-        </div>
-        <div style="margin-top: 45px;">
-            <div class="list" ng-if="vm.infoUsuario">
+    <div class="bar bar-header bar-dark" style="margin-top: -45px;">
+      <!--<h1 class="title">Informacion</h1>-->
+      <button class="button icon ion-compose" ng-click="vm.abrirModal(vm.infoUsuario)"></button>
+    </div>
+    <div style="margin-top: 45px;">
+      <div class="list" ng-if="vm.infoUsuario">
 
-                <a class="item item-icon-left" href="">
-                    <i class="icon ion-person"></i>
-                    {{vm.infoUsuario.idempleado}}
-                </a>
-                <a class="item item-icon-left" href="">
-                    <i class="icon ion-android-happy"></i>
-                    {{vm.infoUsuario.nombre}}
-                </a>
-                <a class="item item-icon-left" href="">
-                    <i class="icon ion-android-happy"></i>
-                    {{vm.infoUsuario.apellido}}
-                </a>
-                <a class="item item-icon-left" href="">
-                    <i class="icon ion-ios-briefcase"></i>
-                    {{vm.infoUsuario.cargo}}
-                </a>
-                <a class="item item-icon-left" href="">
-                    <i class="icon ion-email"></i>
-                    {{vm.infoUsuario.email}}
-                </a>
+        <a class="item item-icon-left" href="">
+          <i class="icon ion-person"></i>
+          {{vm.infoUsuario.idempleado}}
+        </a>
+        <a class="item item-icon-left" href="">
+          <i class="icon ion-android-happy"></i>
+          {{vm.infoUsuario.nombre}}
+        </a>
+        <a class="item item-icon-left" href="">
+          <i class="icon ion-android-happy"></i>
+          {{vm.infoUsuario.apellido}}
+        </a>
+        <a class="item item-icon-left" href="">
+          <i class="icon ion-ios-briefcase"></i>
+          {{vm.infoUsuario.cargo}}
+        </a>
+        <a class="item item-icon-left" href="">
+          <i class="icon ion-email"></i>
+          {{vm.infoUsuario.email}}
+        </a>
 
-            </div>
-            <!--<div class="padding">-->
-            <!--<div class="button-bar">-->
-            <!--<a class="button">Editar</a>-->
-            <!--<a class="button">Actualizar</a>-->
-            <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div style="text-align: center;
-             margin-top: 20px;"> 
-            <a class="button center" ng-click="vm.cerrarSesion()">Cerrar Sesión</a>
-        </div>
-    </ion-content>
+      </div>
+      <!--<div class="padding">-->
+      <!--<div class="button-bar">-->
+      <!--<a class="button">Editar</a>-->
+      <!--<a class="button">Actualizar</a>-->
+      <!--</div>-->
+      <!--</div>-->
+    </div>
+    <div style="text-align: center;
+             margin-top: 20px;">
+      <a class="button center" ng-click="vm.cerrarSesion()">Cerrar Sesión</a>
+    </div>
+  </ion-content>
 </ion-view>

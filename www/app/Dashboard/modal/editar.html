@@ -1,0 +1,103 @@
+<ion-view title="Perfil de usuario">
+
+  <ion-content style="background-color: gainsboro">
+
+    <div class="bar bar-header bar-dark" style="margin-top: -45px;">
+      <!--<h1 class="title">Informacion</h1>-->
+      <button class="button" ng-click="vm.cerrarModal()">Cancelar</button>
+    </div>
+    <div style="margin-top: 45px;">
+      <div class="list" ng-if="vm.infoUsuario2">
+        <form name="formAdmin">
+
+          <label class="item item-input">
+            <i class="icon ion-person placeholder-icon"></i>
+            <input type="text" placeholder="Id empleado" ng-model="vm.infoUsuario2.idempleado"
+                   required
+                   ng-minlength="1"
+                   ng-maxlength="6"
+                   ng-pattern="/^[0-9]+$/"
+                   name="id"
+                   disabled
+            >
+            <div ng-messages="formAdmin.id.$error"
+                 ng-show="formAdmin.id.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
+          </label>
+
+          <label class="item item-input">
+            <i class="icon ion-android-happy placeholder-icon"></i>
+            <input type="text" placeholder="Nombre" ng-model="vm.infoUsuario2.nombre"
+                   required
+                   ng-minlength="3"
+                   ng-maxlength="20"
+                   ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                   name="nombre2"
+            >
+            <div ng-messages="formAdmin.nombre2.$error"
+                 ng-show="formAdmin.nombre2.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
+          </label>
+
+          <label class="item item-input">
+            <i class="icon ion-android-happy placeholder-icon"></i>
+            <input type="text" placeholder="Apellido" ng-model="vm.infoUsuario2.apellido"
+                   required
+                   ng-minlength="3"
+                   ng-maxlength="20"
+                   ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                   name="apellido2"
+            >
+            <div ng-messages="formAdmin.apellido2.$error"
+                 ng-show="formAdmin.apellido2.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
+          </label>
+
+          <label class="item item-input">
+            <i class="icon ion-ios-briefcase placeholder-icon"></i>
+            <input type="text" placeholder="Cargo" ng-model="vm.infoUsuario2.cargo"
+                   required
+                   ng-minlength="4"
+                   ng-maxlength="20"
+                   ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                   name="cargo2"
+            >
+            <div ng-messages="formAdmin.cargo2.$error"
+                 ng-show="formAdmin.cargo2.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
+          </label>
+
+          <label class="item item-input">
+            <i class="icon ion-email placeholder-icon"></i>
+            <input type="email" placeholder="Correo" ng-model="vm.infoUsuario2.email"
+                   required
+                   ng-maxlength="30"
+                   name="mail"
+            >
+            <div ng-messages="formAdmin.mail.$error"
+                 ng-show="formAdmin.mail.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
+          </label>
+
+        </form>
+
+      </div>
+    </div>
+    <div style="text-align: center;
+             margin-top: 20px;">
+      <button class="button center" ng-click="vm.editar()"
+              ng-disabled="formAdmin.$invalid">Guardar
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

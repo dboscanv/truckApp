@@ -11,26 +11,23 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Nro. Empleado</span>
           <input type="text" placeholder="Nro. Empleado"
-                 ng-model="vm.custodio.idempleado"
+                 ng-model="vm.custodio2.idempleado"
                  name="custid"
                  ng-minlength="2"
                  ng-maxlength="10"
                  ng-pattern="/^[0-9]+$/"
+                 disabled
                  required>
           <div ng-messages="custform.custid.$error"
                ng-show="custform.custid.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo se permiten números</p>
-              <p ng-message="required">Solo se permiten números</p>
-              <p ng-message="maxlength">Máximo 10 caracteres</p>
-              <p ng-message="minlength">Minimo 2 caracteres</p>
             </div>
           </div>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Nombre</span>
           <input type="text" placeholder="Nombre"
-                 ng-model="vm.custodio.nombre"
+                 ng-model="vm.custodio2.nombre"
                  name="custname"
                  ng-minlength="4"
                  ng-maxlength="20"
@@ -39,17 +36,13 @@
           <div ng-messages="custform.custname.$error"
                ng-show="custform.custname.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo letras</p>
-              <p ng-message="maxlength">Máximo 20 caracteres</p>
-              <p ng-message="minlength">Minimo 4 caracteres</p>
-              <p ng-message="required">Campo requerido</p>
             </div>
           </div>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Apellido</span>
           <input type="text" placeholder="Apellido"
-                 ng-model="vm.custodio.apellido"
+                 ng-model="vm.custodio2.apellido"
                  name="custlname"
                  ng-minlength="4"
                  ng-maxlength="20"
@@ -58,17 +51,13 @@
           <div ng-messages="custform.custlname.$error"
                ng-show="custform.custlname.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo letras</p>
-              <p ng-message="maxlength">Máximo 20 caracteres</p>
-              <p ng-message="minlength">Minimo 4 caracteres</p>
-              <p ng-message="required">Campo requerido</p>
             </div>
           </div>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Cargo</span>
           <input type="text" placeholder="Cargo"
-                 ng-model="vm.custodio.cargo"
+                 ng-model="vm.custodio2.cargo"
                  name="custcargo"
                  ng-minlength="4"
                  ng-maxlength="20"
@@ -78,10 +67,6 @@
           <div ng-messages="custform.custcargo.$error"
                ng-show="custform.custcargo.$touched">
             <div ng-messages-include="error-messages">
-              <p ng-message="pattern">Solo letras</p>
-              <p ng-message="maxlength">Máximo 6 caracteres</p>
-              <p ng-message="minlength">Minimo 3 caracteres</p>
-              <p ng-message="required">Campo requerido</p>
             </div>
           </div>
         </label>

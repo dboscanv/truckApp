@@ -38,20 +38,16 @@
             </div>
           </div>
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Tipo</span>
-          <input type="text" placeholder="Tipo"
-                 ng-model="vm.ruta.tipo"
-                 name="rutatipo"
-                 ng-minlength="4"
-                 ng-maxlength="10"
-                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
-                 required>
-          <div ng-messages="rutaform.rutatipo.$error"
-               ng-show="rutaform.rutatipo.$touched">
-            <div ng-messages-include="error-messages">
-            </div>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tipo
           </div>
+          <select ng-options="x.id as x.tipo for x in vm.tiporuta" ng-model="vm.ruta.tipo" required name="rutatipo">
+            <div ng-messages="rutaform.rutatipo.$error"
+                 ng-show="rutaform.rutatipo.$touched">
+              <div ng-messages-include="error-messages">
+              </div>
+            </div>
         </label>
       </form>
     </div>

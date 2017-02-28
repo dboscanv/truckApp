@@ -11,11 +11,12 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Nro. Camión</span>
           <input type="number" placeholder="Nro. Camión"
-                 ng-model="vm.camion.id"
-                 ng-minlength="3"
+                 ng-model="vm.camion2.id"
+                 ng-minlength="1"
                  ng-maxlength="6"
                  ng-pattern="/^[0-9]+$/"
                  name="truckId2"
+                 disabled
                  required>
           <div ng-messages="truck2.truckId2.$error"
                ng-show="truck2.truckId2.$touched">
@@ -27,7 +28,7 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Cantidad</span>
           <input type="number" placeholder="Cantidad"
-                 ng-model="vm.camion.cantidad"
+                 ng-model="vm.camion2.cantidad"
                  name="truckCantidad2"
                  ng-minlength="1"
                  ng-maxlength="10"
@@ -44,7 +45,7 @@
         <label class="item item-input item-floating-label">
           <span class="input-label">Capacidad</span>
           <input type="number" placeholder="Capacidad"
-                 ng-model="vm.camion.capacidad"
+                 ng-model="vm.camion2.capacidad"
                  name="truckCapacidad2"
                  ng-minlength="1"
                  ng-maxlength="10"
