@@ -105,7 +105,7 @@
     //editar custodio
     function editar(cust) {
       vm.modal2.show();
-      let q = custodio.child(cust.idempleado)
+      var q = custodio.child(cust.idempleado)
       vm.custodio2 = $firebaseObject(q);
       console.log(vm.custodio2)
     }

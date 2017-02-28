@@ -69,7 +69,7 @@
         vm.modal2.show();
         //                vm.camion = camion;
         // var q = camion.orderByChild('id').equalTo(ca.id);
-        let q = camion.child(ca.id);
+        var q = camion.child(ca.id);
         vm.camion2 = $firebaseObject(q);
         console.log(vm.camion2)
       }

@@ -92,9 +92,14 @@
       $localStorage.config = {
         config: true,
         idRuta: vm.idruta,
+        idCamion: vm.camion_selec.$id,
         recorrido: rec.key,
         custodios: arrCust
       };
+
+      ruta
+        .child(vm.idruta)
+        .update({used: true});
       // $localStorage.config = {config: true, idRuta: vm.idruta, recorrido: rec.key()};
       // Ejemplo, no borrar
       // var newObj = {};

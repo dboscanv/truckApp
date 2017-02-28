@@ -75,6 +75,7 @@
         $rootScope.$broadcast('loading:hide');
         return alert("Nro de ruta ya esta registrado")
       }
+      vm.ruta.used = false;
       ruta.child(vm.ruta.idruta).set(vm.ruta);
       vm.ruta = {};
       vm.modal.hide();

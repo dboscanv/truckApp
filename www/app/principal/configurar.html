@@ -9,7 +9,7 @@
             <div class="input-label">
               Camion
             </div>
-            <select ng-options="camion as camion.id for camion in vm.camion"
+            <select ng-options="camion as camion.id for camion in vm.camion | filter:false"
                     name="camionForm" required
                     ng-model="vm.camion_selec"></select>
             <div ng-messages="formConfig.camionForm.$error"
@@ -28,7 +28,7 @@
             <div class="input-label">
               Ruta
             </div>
-            <select ng-options="ruta.idruta as ruta.nombre for ruta in vm.ruta"
+            <select ng-options="ruta.idruta as ruta.nombre for ruta in vm.ruta | filter:false"
                     name="rutaForm" required
                     ng-model="vm.idruta">
             </select>

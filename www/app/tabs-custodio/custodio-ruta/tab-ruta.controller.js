@@ -45,8 +45,16 @@
           .update({enCamion: false})
       });
 
+      firebase.ref('ruta')
+        .child($localStorage.config.idRuta)
+        .update({used: false});
+
       firebase.ref("recorridos/" + $localStorage.config.recorrido)
         .update({estado: 0});
+
+      firebase.ref('camion')
+        .child($localStorage.config.idCamion)
+        .update({enRuta: false});
 
       delete $localStorage.config;
       auth.$signOut();
