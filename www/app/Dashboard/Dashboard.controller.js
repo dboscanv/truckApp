@@ -1,6 +1,7 @@
 /**
  * Created by nomisnaujpc on 30/12/2016.
  */
+
 (function (firebase) {
 
   angular.module('truckApp.Dashboard')

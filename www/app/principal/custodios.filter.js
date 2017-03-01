@@ -2,7 +2,6 @@
  * Created by nomisnaujpc on 08/01/2017.
  */
 (function () {
-  "use strict";
 
   angular.module("truckApp.Principal")
     .filter("Custodios_filter", Filtro);

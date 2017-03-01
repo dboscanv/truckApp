@@ -102,7 +102,8 @@
           .then(function (result) {
             alert("Reporte exportado correctamente");
           }, function (err) {
-            alert("Error exportando el reporte");
+            alert("Error exportando el reporte, asegurese de tener espacio disponible o una tarjeta extraible");
+            console.log(err)
           }, function (progress) {
 
           });
