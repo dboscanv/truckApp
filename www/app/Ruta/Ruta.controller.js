@@ -79,6 +79,7 @@
       ruta.child(vm.ruta.idruta).set(vm.ruta);
       vm.ruta = {};
       vm.modal.hide();
+      $rootScope.$broadcast('loading:hide');
     }
 
     //eliminar ruta

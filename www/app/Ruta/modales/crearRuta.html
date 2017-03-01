@@ -1,3 +1,65 @@
+<!--<ion-modal-view>-->
+<!--<ion-header-bar class="bar bar-header bar-dark">-->
+<!--<h1 class="title">Crear ruta</h1>-->
+<!--<button class="button button-clear button-primary"-->
+<!--ng-click="vm.cerrarModal(1)">Cancelar-->
+<!--</button>-->
+<!--</ion-header-bar>-->
+<!--<ion-content class="padding">-->
+<!--<div class="list">-->
+<!--<form name="rutaform">-->
+<!--<label class="item item-input item-floating-label">-->
+<!--<span class="input-label">Nro. Ruta</span>-->
+<!--<input type="text" placeholder="Nro Ruta"-->
+<!--ng-model="vm.ruta.idruta"-->
+<!--name="rutaid"-->
+<!--ng-minlength="2"-->
+<!--ng-maxlength="10"-->
+<!--ng-pattern="/^[0-9]+$/"-->
+<!--required>-->
+<!--<div ng-messages="rutaform.rutaid.$error"-->
+<!--ng-show="rutaform.rutaid.$touched">-->
+<!--<div ng-messages-include="error-messages">-->
+<!--</div>-->
+<!--</div>-->
+<!--</label>-->
+<!--<label class="item item-input item-floating-label">-->
+<!--<span class="input-label">Nombre</span>-->
+<!--<input type="text" placeholder="Nombre"-->
+<!--ng-model="vm.ruta.nombre"-->
+<!--name="rutanombre"-->
+<!--ng-minlength="5"-->
+<!--ng-maxlength="20"-->
+<!--ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"-->
+<!--required>-->
+<!--<div ng-messages="rutaform.rutanombre.$error"-->
+<!--ng-show="rutaform.rutanombre.$touched">-->
+<!--<div ng-messages-include="error-messages">-->
+<!--</div>-->
+<!--</div>-->
+<!--</label>-->
+<!--<label class="item item-input item-select">-->
+<!--<div class="input-label">-->
+<!--Tipo-->
+<!--</div>-->
+<!--<select ng-options="x.id as x.tipo for x in vm.tiporuta" ng-model="vm.ruta.tipo" required name="rutatipo">-->
+<!--<div ng-messages="rutaform.rutatipo.$error"-->
+<!--ng-show="rutaform.rutatipo.$touched">-->
+<!--<div ng-messages-include="error-messages">-->
+<!--</div>-->
+<!--</div>-->
+<!--</label>-->
+<!--</form>-->
+<!--</div>-->
+<!--<div class="padding">-->
+<!--<button class="button button-block button-positive"-->
+<!--ng-click="vm.registrarRuta()" ng-disabled="rutaform.$invalid">-->
+<!--Registar-->
+<!--</button>-->
+<!--</div>-->
+<!--</ion-content>-->
+<!--</ion-modal-view>-->
+
 <ion-modal-view>
   <ion-header-bar class="bar bar-header bar-dark">
     <h1 class="title">Crear ruta</h1>
@@ -30,7 +92,7 @@
                  name="rutanombre"
                  ng-minlength="5"
                  ng-maxlength="20"
-                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
+                 ng-pattern="/^([A-Za-z0-9ÑñáéíóúÁÉÍÓÚ ]+)$/"
                  required>
           <div ng-messages="rutaform.rutanombre.$error"
                ng-show="rutaform.rutanombre.$touched">
@@ -42,19 +104,23 @@
           <div class="input-label">
             Tipo
           </div>
-          <select ng-options="x.id as x.tipo for x in vm.tiporuta" ng-model="vm.ruta.tipo" required name="rutatipo">
-            <div ng-messages="rutaform.rutatipo.$error"
-                 ng-show="rutaform.rutatipo.$touched">
-              <div ng-messages-include="error-messages">
-              </div>
+          <select ng-options="x.tipo as x.tipo for x in vm.tiporuta"
+                  ng-model="vm.ruta.tipo" required name="rutatipo">
+
+          </select>
+          <div ng-messages="rutaform.rutatipo.$error"
+               ng-show="rutaform.rutatipo.$touched">
+            <div ng-messages-include="error-messages">
             </div>
+          </div>
         </label>
       </form>
+
     </div>
     <div class="padding">
       <button class="button button-block button-positive"
               ng-click="vm.registrarRuta()" ng-disabled="rutaform.$invalid">
-        Registar
+        Registrar
       </button>
     </div>
   </ion-content>
