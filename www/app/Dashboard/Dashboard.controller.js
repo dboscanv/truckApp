@@ -90,5 +90,11 @@
       console.error("Error: ", error);
     }
 
+    vm.cargos = [
+      {id: 1, nombre: "Jefe de Oficina"},
+      {id: 2, nombre: "Jefe de Operaciones"}
+    ]
+
+
   }
 })(firebase.database());

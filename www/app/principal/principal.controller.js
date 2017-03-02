@@ -20,6 +20,7 @@
     const ruta = firebase.ref("ruta");
     const camion = firebase.ref("camion");
     const recorridos = firebase.ref("recorridos");
+    const cliente = firebase.ref("cliente");
     var arrCust;
     vm.custodios_selec = [];
     console.log("Inicio, custodios _selec vacio");
@@ -43,6 +44,13 @@
     }
 
     function configurar() {
+
+      // let q = cliente.orderByChild("ruta").equalTo(vm.idruta);
+      // let r = $firebaseArray(q);
+      // debugger
+      // if (r.length <= 0) {
+      //   return alert("La ruta no tiene clientes asignados, contacte a un administrador");
+      // }
 
 
       //1. Configurar que el camion esta en ruta.

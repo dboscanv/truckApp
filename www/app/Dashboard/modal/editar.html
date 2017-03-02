@@ -58,16 +58,21 @@
               </div>
             </div>
           </label>
-
-          <label class="item item-input">
-            <i class="icon ion-ios-briefcase placeholder-icon"></i>
-            <input type="text" placeholder="Cargo" ng-model="vm.infoUsuario2.cargo"
-                   required
-                   ng-minlength="4"
-                   ng-maxlength="20"
-                   ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
-                   name="cargo2"
-            >
+          <label class="item item-input item-select">
+            <span class="input-label">Cargo</span>
+            <select ng-model="vm.infoUsuario2.cargo"
+                    ng-options="x.nombre as x.nombre for x in vm.cargos"
+                    required
+                    name="cargo2"></select>
+            <!--<label class="item item-input">-->
+            <!--<i class="icon ion-ios-briefcase placeholder-icon"></i>-->
+            <!--<input type="text" placeholder="Cargo" ng-model="vm.infoUsuario2.cargo"-->
+            <!--required-->
+            <!--ng-minlength="4"-->
+            <!--ng-maxlength="20"-->
+            <!--ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"-->
+            <!--name="cargo2"-->
+            <!--&gt;-->
             <div ng-messages="formAdmin.cargo2.$error"
                  ng-show="formAdmin.cargo2.$touched">
               <div ng-messages-include="error-messages">

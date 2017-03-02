@@ -48,14 +48,18 @@
             <div ng-messages-include="error-messages"></div>
           </div>
         </label>
-        <label class="item item-input item-floating-label">
+        <label class="item item-input item-select">
           <span class="input-label">Cargo</span>
-          <input type="text" placeholder="Cargo" ng-change="vm.cambio()" ng-model="vm.admin.cargo"
-                 required
-                 ng-minlength="5"
-                 ng-maxlength="20"
-                 ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"
-                 name="cargoForm">
+          <select ng-model="vm.admin.cargo"
+                  ng-options="x.nombre as x.nombre for x in vm.cargos"
+                  required
+                  name="cargoForm"></select>
+          <!--<input type="text" placeholder="Cargo" ng-change="vm.cambio()" ng-model="vm.admin.cargo"-->
+          <!--required-->
+          <!--ng-minlength="5"-->
+          <!--ng-maxlength="20"-->
+          <!--ng-pattern="/^([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$/"-->
+          <!--name="cargoForm">-->
           <div ng-messages="registroForm.cargoForm.$error" ng-show="registroForm.cargoForm.$touched">
             <div ng-messages-include="error-messages"></div>
           </div>
